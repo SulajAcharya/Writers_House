@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2023 at 05:14 PM
+-- Generation Time: Jul 18, 2023 at 06:30 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -205,13 +205,17 @@ ALTER TABLE `chat`
 -- Indexes for table `comments`
 --
 ALTER TABLE `comments`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `content` (`content_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `content`
 --
 ALTER TABLE `content`
-  ADD PRIMARY KEY (`content_id`);
+  ADD PRIMARY KEY (`content_id`),
+  ADD KEY `genre` (`genre_id`),
+  ADD KEY `user` (`user_id`);
 
 --
 -- Indexes for table `feedback`
@@ -224,6 +228,14 @@ ALTER TABLE `feedback`
 --
 ALTER TABLE `genre`
   ADD PRIMARY KEY (`genre_id`);
+
+--
+-- Indexes for table `previous_visit`
+--
+ALTER TABLE `previous_visit`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `content_id` (`content_id`),
+  ADD KEY `u_id` (`user_id`);
 
 --
 -- Indexes for table `user`
@@ -266,10 +278,41 @@ ALTER TABLE `genre`
   MODIFY `genre_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `previous_visit`
+--
+ALTER TABLE `previous_visit`
+  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `content` FOREIGN KEY (`content_id`) REFERENCES `content` (`content_id`),
+  ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+
+--
+-- Constraints for table `content`
+--
+ALTER TABLE `content`
+  ADD CONSTRAINT `genre` FOREIGN KEY (`genre_id`) REFERENCES `genre` (`genre_id`),
+  ADD CONSTRAINT `user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+
+--
+-- Constraints for table `previous_visit`
+--
+ALTER TABLE `previous_visit`
+  ADD CONSTRAINT `content_id` FOREIGN KEY (`content_id`) REFERENCES `content` (`content_id`),
+  ADD CONSTRAINT `u_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
