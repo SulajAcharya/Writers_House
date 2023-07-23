@@ -15,15 +15,13 @@
                 <div class="chat-box card-body">
                     
                 </div>
-                <div class="card-footer d-flex justify-content-start align-items-center p-3">
-                    <div class="input-group">
-                        <form action="#" class="typing-area" autocomplete="off">
-                            <input type="text" name="outgoing_id" value="" hidden>
-                            <input type="text" name="incoming_id" value="" hidden>
-                            <input type="text" class="form-control" name="message" class="input-field" placeholder="Type here">
-                            <span class="btn btn-primary"><i class="fab fa-telegram-plane"></i></span>
-                        </form>
-                    </div>
+                <div class="chat_input input-group mb-3">
+                    <input type="text" name="outgoing_id" value="" hidden>
+                    <input type="text" name="incoming_id" value="" hidden>
+                    <input type="text" class="form-control" placeholder="Type here" aria-describedby="chat-icon">
+                    <button class="btn btn-primary" type="button" id="chat-icon" data-mdb-ripple-color="dark">
+                        <i class="fab fa-telegram-plane"></i>
+                    </button>
                 </div>
             </div>
         </div>
