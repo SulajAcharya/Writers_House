@@ -8,7 +8,7 @@
 		exit(0);
 	}
 
-    if($_POST["signin"])
+    if(isset($_POST["signin"]))
     {
         signin($_POST);
         redirect_to_current_page();
@@ -24,7 +24,7 @@
                     <h2 class="mt-5 mb-3 ms-5 fw-bold text-primary">Sign In</h2>
                     <p class="mb-5 ms-5">Sign in to your account</p>
                     <div class="mb-4 mx-5">
-                        <input type="text" class="form-control me-5" id="email_address user_name" name="email_address user_name" placeholder="Email or Username" required>
+                        <input type="text" class="form-control me-5" id="email_address" name="email_address" placeholder="Email" required>
                     </div>
                     <div class="mb-4 mx-5">
                         <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>

@@ -28,10 +28,9 @@
 		$email_address = htmlspecialchars(trim($email_address));
 		$password = create_hash($password);
 
-		$sql = "SELECT user_id, role FROM user WHERE email_address = :email_address OR user_name = :user_name AND password = :password";
+		$sql = "SELECT user_id, role FROM user WHERE email_address = :email_address AND password = :password";
 		$stmt = $db->prepare($sql);
 		$stmt->bindParam(':email_address', $email_address, PDO::PARAM_STR);
-		$stmt->bindParam(':user_name', $user_name, PDO::PARAM_STR);
 		$stmt->bindParam(':password',$password, PDO::PARAM_STR);
 
 		if($stmt->execute())
@@ -52,45 +51,44 @@
 	{
 		global $db;
 		extract($data);
-		$email_address=htmlspecialchars(trim($email_address));
+		$email_address = htmlspecialchars(trim($email_address));
 
-		if(filter_var($email_address,FILTER_VALIDATE_EMAIL)===false)
-		{
-			$_SESSION["error_message"][]="Invalid Email Address";
+		if (filter_var($email_address, FILTER_VALIDATE_EMAIL) === false) {
+			$_SESSION["error_message"][] = "Invalid Email Address";
 		}
-		if (emailaddress_checking($email_address)===true )
-		{
-			$_SESSION["error_message"][]="This email address is already registered";
+
+		if (emailaddress_checking($email_address) === true) {
+			$_SESSION["error_message"][] = "This email address is already registered";
 		}
-		if($password!==$conf_pass)
-		{
-			$_SESSION["error_message"][]="Password and Confirm password are not matching";
+
+		if ($password != $conf_pass) {
+			$_SESSION["error_message"][] = "Password and Confirm password are not matching";
 		}
-		if(!isset($_SESSION["error_message"]))
-		{
-			$password=create_hash($password);
-			$image = isset($_FILES['image']) ? upload_file($_FILES['image'], "img/", ["jpg", "jpeg", "png"]) : "";
-			$sql="INSERT INTO user 	(fname,lname,user_name,email_address,password,img) VALUES (:fname,:lname,:user_name,:email_address,:password,:img)";
-			$stmt=$db->prepare($sql);
-			$stmt->bindParam(':fname',$fname,PDO::PARAM_STR);
-			$stmt->bindParam(':lname',$lname,PDO::PARAM_STR);
-			$stmt->bindParam(':user_name',$user_name,PDO::PARAM_STR);
-			$stmt->bindParam(':email_address',$email_address,PDO::PARAM_STR);
-			$stmt->bindParam(':password',$password,PDO::PARAM_STR);
-			$stmt->bindParam(':img',$img,PDO::PARAM_STR);
-			if($stmt->execute())
-			{
-				$_SESSION["success_message"][]="Successfully Registered";
+
+		if (!isset($_SESSION["error_message"])) {
+			$password = create_hash($password);
+			$unique_id = rand(time(), 1000);
+			$image = isset($_FILES['image']) ? upload_file($_FILES['image'], "image/", ["jpg", "jpeg", "png"]) : "Image Not Uploaded";
+
+			$sql = "INSERT INTO user(fname, lname, user_name, email_address, password, unique_id, image) VALUES (:fname, :lname, :user_name, :email_address, :password, :unique_id, :image)";
+			$stmt = $db->prepare($sql);
+			$stmt->bindParam(':fname', $fname, PDO::PARAM_STR);
+			$stmt->bindParam(':lname', $lname, PDO::PARAM_STR);
+			$stmt->bindParam(':user_name', $user_name, PDO::PARAM_STR);
+			$stmt->bindParam(':email_address', $email_address, PDO::PARAM_STR);
+			$stmt->bindParam(':password', $password, PDO::PARAM_STR);
+			$stmt->bindParam(':unique_id', $unique_id, PDO::PARAM_STR);
+			$stmt->bindParam(':image', $image, PDO::PARAM_STR);
+
+			if ($stmt->execute()) {
+				$_SESSION["success_message"][] = "Successfully Registered";
 				return true;
 			}
-			return false;
-			
-		}
-		
-		
-		
-		
 
+			return false;
+		}
+
+		return false;
 	}
 
 	function emailaddress_checking($email_address)
@@ -105,4 +103,21 @@
 		}
 		return false;
 	}	
+
+	function upload_file($file, $targetDirectory, $allowedExtensions) 
+	{
+		$fileName = basename($file["name"]);
+		$targetFile = $targetDirectory . $fileName;
+		$fileExtension = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+		if (!in_array($fileExtension, $allowedExtensions)) {
+			return ""; 
+		}
+
+		if (move_uploaded_file($file["tmp_name"], $targetFile)) {
+			return $targetFile;
+		}
+
+		return "";
+	}
 ?>
