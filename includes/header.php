@@ -15,13 +15,11 @@
 	<link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow navbar-custom">
-    <div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow navbar-custom">
       <a class="navbar-brand writershouse-title font-weight-bold" href="#" style="color: #2091F9;">WritersHouse</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto"> <!-- Right align the navigation links -->
           <li class="nav-item">
@@ -47,5 +45,4 @@
           </li>
         </ul>
       </div>
-    </div>
   </nav>

@@ -3,3 +3,25 @@
     border: none;
     filter: drop-shadow(0px 8px 4px #c5c5c5);
 }
+#main {
+    background-image: url(/assets/img/Circle_new.png);
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    overflow-y: hidden;
+}
+#main .left_side .top_text {
+    font-size: 70px;
+    font-weight: 600;
+}
+#main .right_side img {
+    width: 80%;
+}
+@media (max-width: 768px) {
+    #main {
+        background-image: none;
+    }
+    #main .right_side img {
+        display: none;
+    }
+}
