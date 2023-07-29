@@ -16,33 +16,33 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow navbar-custom">
-      <a class="navbar-brand writershouse-title font-weight-bold" href="#" style="color: #2091F9;">WritersHouse</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="container">
+      <a class="navbar-brand writershouse-title fw-bold text-primary" href="#">WritersHouse</a>
+      <form class="col-md-5 offset-md-1">
+        <div class="input-group">
+          <input class="form-control border-end-0 border-secondary tedt-dark" type="search" placeholder="Search" id="example-search-input">
+          <span class="input-group-append">
+            <button class="btn bg-white border-start-0 border-secondary rounded-end" type="button">
+              <i class="fa fa-search"></i>
+            </button>
+          </span>
+        </div>
+      </form>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto"> <!-- Right align the navigation links -->
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <form class="d-flex">
-              <div class="input-group rounded">
-                <input class="form-control border-end-0 border rounded-start" type="search" placeholder="search" id="example-search-input">
-                <span class="input-group-append">
-                  <button class="btn btn-outline-secondary bg-white border-start-0 border-bottom-0 border rounded-end" type="button">
-                    <i class="fa fa-search"></i>
-                  </button>
-                </span>
-              </div>
-            </form>
+            <a class="nav-link" href="#"><span>Explore Now</span></a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#"><span class="font-weight-bold">Explore Now</span></a>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><span>Sign In</span></a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#"><span class="font-weight-bold">Sign In</span></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#"><span class="font-weight-bold">Register</span></a>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><span>Register</span></a>
           </li>
         </ul>
       </div>
+    </div>
   </nav>

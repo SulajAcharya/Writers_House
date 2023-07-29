@@ -24,7 +24,7 @@
 <div id="main" class="col-md-12">
   <div class="container">
     <div class="row">
-      <div class="col-md-4 left_side mt-5 vh-100">
+      <div class="col-md-4 left_side mt-5">
         <div class="py-3"></div>
         <p class="mt-5 text-primary top_text">Hi, we're</p>
         <p class="mb-5 text-primary top_text">WritersHouse</p>

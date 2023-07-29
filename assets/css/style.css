@@ -10,12 +10,15 @@
     background-position-x: right;
     overflow-y: hidden;
 }
+#main .left_side {
+    height: 80vh;
+}
 #main .left_side .top_text {
     font-size: 70px;
     font-weight: 600;
 }
 #main .right_side img {
-    width: 80%;
+    width: 90%;
 }
 @media (max-width: 768px) {
     #main {
@@ -24,4 +27,12 @@
     #main .right_side img {
         display: none;
     }
+}
+
+.writershouse-title {
+    font-size: 30px;
+}
+#navbarText li {
+    font-size: 20px;
+    font-weight: 600;
 }
