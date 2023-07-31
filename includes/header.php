@@ -32,14 +32,14 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item">
+        <ul class="navbar-nav ms-5 mb-2 mb-lg-0">
+          <li class="nav-item me-4">
             <a class="nav-link" href="#"><span>Explore Now</span></a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item me-4">
             <a class="nav-link" href="#"><span>Sign In</span></a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item me-4">
             <a class="nav-link" href="#"><span>Register</span></a>
           </li>
         </ul>
