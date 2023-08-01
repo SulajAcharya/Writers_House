@@ -11,7 +11,7 @@
     if(isset($_POST["signin"]))
     {
         signin($_POST);
-        redirect_to_current_page();
+        current_page();
     }
 ?>
 
@@ -20,7 +20,7 @@
         <div class="card mt-5 col-md-6 offset-md-3 shadow pb-3 bg-body rounded">
             <div class="card-body m-3">
                 <?php error_message(); ?>
-                <form role="form" action="<?php echo get_action_attr_value_for_current_page(); ?>" method="post" enctype="multipart/form-data">
+                <form role="form" action="<?php echo action_form(); ?>" method="post" enctype="multipart/form-data">
                     <h2 class="mt-5 mb-3 ms-5 fw-bold text-primary">Sign In</h2>
                     <p class="mb-5 ms-5">Sign in to your account</p>
                     <div class="mb-4 mx-5">

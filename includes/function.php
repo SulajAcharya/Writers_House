@@ -1,16 +1,16 @@
 <?php
-	function create_hash($string)
+	function encrypt_pwd($string)
 	{
 		return sha1($string);
 	}
 
-	function get_action_attr_value_for_current_page($query="")
+	function action_form($query="")
 	{
 		$query = $query === "" ? $query : "?$query";
 		return preg_replace("/index\.php|index|\.php$/", "", htmlspecialchars($_SERVER["PHP_SELF"])) . $query;
 	}
 
-	function redirect_to_current_page($query="")
+	function current_page($query="")
 	{
 		echo "<script>window.location='".preg_replace("/index\.php|index|\.php$/", "", htmlspecialchars($_SERVER["PHP_SELF"]))."?$query';</script>";
 		exit(0);
@@ -26,7 +26,7 @@
 		global $db;
 		extract($data);
 		$email_address = htmlspecialchars(trim($email_address));
-		$password = create_hash($password);
+		$password = encrypt_pwd($password);
 
 		$sql = "SELECT user_id, role FROM user WHERE email_address = :email_address AND password = :password";
 		$stmt = $db->prepare($sql);
@@ -68,7 +68,7 @@
 		if (!isset($_SESSION["error_message"])) {
 			$password = create_hash($password);
 			$unique_id = rand(time(), 1000);
-			$image = isset($_FILES['image']) ? upload_file($_FILES['image'], "image/", ["jpg", "jpeg", "png"]) : "Image Not Uploaded";
+			$image = isset($_FILES['image']) ? upload_file($_FILES['image'], "img/", ["jpg", "jpeg", "png"]) : "";
 
 			$sql = "INSERT INTO user(fname, lname, user_name, email_address, password, unique_id, image) VALUES (:fname, :lname, :user_name, :email_address, :password, :unique_id, :image)";
 			$stmt = $db->prepare($sql);
@@ -104,20 +104,19 @@
 		return false;
 	}	
 
-	function upload_file($file, $targetDirectory, $allowedExtensions) 
-	{
+	function upload_file($file, $targetDirectory, $allowedExtensions) {
 		$fileName = basename($file["name"]);
 		$targetFile = $targetDirectory . $fileName;
 		$fileExtension = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-
+	  
 		if (!in_array($fileExtension, $allowedExtensions)) {
-			return ""; 
+		  return ""; 
 		}
 
 		if (move_uploaded_file($file["tmp_name"], $targetFile)) {
-			return $targetFile;
+		  return $targetFile;
 		}
-
+	  
 		return "";
 	}
 ?>

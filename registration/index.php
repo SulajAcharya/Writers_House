@@ -5,7 +5,7 @@
   if(isset($_POST["registration"]))
   {
     registration($_POST);
-    redirect_to_current_page();
+    current_page();
   }
 ?>
 
@@ -15,7 +15,7 @@
       <div class="card">
         <div class="card-body">
           <?php error_message(); ?>
-          <form role="form" action="<?php echo get_action_attr_value_for_current_page(); ?>" class="form-group" method="post" enctype="multipart/form-data">
+          <form role="form" action="<?php echo action_form(); ?>" class="form-group" method="post" enctype="multipart/form-data">
             <h2 class="d-flex justify-content-start mb-4" style="color:blue">Sign Up</h2>
             <div class="row mb-3">
               <div class="col-md-6">
@@ -48,7 +48,7 @@
               </div>
             </div>
             <div class="col-md-12 mb-3">
-              <label class="form-label fw-bold text-uppercase" for="image">Photo</label>
+              <label class="form-label fw-bold text-uppercase" for="image">Profile Image</label>
               <input type="file" class="form-control" id="image" name="image" required>
             </div>
             <p class="acknowledgement"><input type="checkbox" id="acknowledgement" name="acknowledgement" value="acknowledgement" required> I Agree With <a href="#">Terms & Services</a></p>
