@@ -66,11 +66,11 @@
 		}
 
 		if (!isset($_SESSION["error_message"])) {
-			$password = create_hash($password);
+			$password = encrypt_pwd($password);
 			$unique_id = rand(time(), 1000);
 			$image = isset($_FILES['image']) ? upload_file($_FILES['image'], "img/", ["jpg", "jpeg", "png"]) : "";
 
-			$sql = "INSERT INTO user(fname, lname, user_name, email_address, password, unique_id, image) VALUES (:fname, :lname, :user_name, :email_address, :password, :unique_id, :image)";
+			$sql = "INSERT INTO user(fname, lname, user_name, email_address, password, unique_id, img) VALUES (:fname, :lname, :user_name, :email_address, :password, :unique_id, :image)";
 			$stmt = $db->prepare($sql);
 			$stmt->bindParam(':fname', $fname, PDO::PARAM_STR);
 			$stmt->bindParam(':lname', $lname, PDO::PARAM_STR);
