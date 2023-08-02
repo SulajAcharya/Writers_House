@@ -120,9 +120,21 @@
 		return "";
 	}
 
-	function get_count_of_user()
+	function feedback_response($data)
 	{
 		global $db;
-		$sql = "SELECT COUNT(1) as count";
+		extract($data);
+		$sql="INSERT INTO feedback(email_address,feddback_comment,rating) VALUES (:email_address, :feddback_comment, :rating)";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':email_address', $email_address, PDO::PARAM_STR);
+		$stmt->bindParam(':feddback_comment', $feddback_comment, PDO::PARAM_STR);
+		$stmt->bindParam(':rating', $rating, PDO::PARAM_STR);
+
+		if ($stmt->execute()) {
+			$_SESSION["success_message"][] = "Feedback Added Successfully";
+			return true;
+		}
+
+		return false;
 	}
 ?>
