@@ -68,7 +68,7 @@
 		if (!isset($_SESSION["error_message"])) {
 			$password = encrypt_pwd($password);
 			$unique_id = rand(time(), 1000);
-			$image = isset($_FILES['image']) ? upload_file($_FILES['image'], "img/", ["jpg", "jpeg", "png"]) : "";
+			$image = isset($_FILES['image']) ? upload_file($_FILES['image'], "D:/Ajay Programmers/Xampp/htdocs/Writers_House/img/", ["jpg", "jpeg", "png"]) : "";
 
 			$sql = "INSERT INTO user(fname, lname, user_name, email_address, password, unique_id, img) VALUES (:fname, :lname, :user_name, :email_address, :password, :unique_id, :image)";
 			$stmt = $db->prepare($sql);
@@ -118,5 +118,11 @@
 		}
 	  
 		return "";
+	}
+
+	function get_count_of_user()
+	{
+		global $db;
+		$sql = "SELECT COUNT(1) as count";
 	}
 ?>
