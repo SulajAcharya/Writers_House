@@ -134,7 +134,47 @@
 			$_SESSION["success_message"][] = "Feedback Added Successfully";
 			return true;
 		}
+	}
 
+	function get_count_of_user()
+	{
+		global $db;
+		$sql = "SELECT COUNT(user_id) as count FROM user WHERE role = 'user' AND block = '0'";
+		$stmt = $db->prepare($sql);
+
+		if($stmt->execute())
+		{
+			$result = $stmt->fetch(PDO::FETCH_ASSOC);
+			return (int) $result['count'];
+		}
+		return false;
+	}
+
+	function get_count_of_writer()
+	{
+		global $db;
+		$sql = "SELECT COUNT(user_id) as count FROM user WHERE role = 'writer' AND block = '0'";
+		$stmt = $db->prepare($sql);
+
+		if($stmt->execute())
+		{
+			$result = $stmt->fetch(PDO::FETCH_ASSOC);
+			return (int) $result['count'];
+		}
+		return false;
+	}
+
+	function get_count_of_content()
+	{
+		global $db;
+		$sql = "SELECT COUNT(content_id) as count FROM content WHERE deleted = '0'";
+		$stmt = $db->prepare($sql);
+
+		if($stmt->execute())
+		{
+			$result = $stmt->fetch(PDO::FETCH_ASSOC);
+			return (int) $result['count'];
+		}
 		return false;
 	}
 ?>
