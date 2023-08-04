@@ -43,7 +43,7 @@
 				return true;
 			}
 		}
-		$_SESSION["error_message"][] = "Invalid Login";
+		$_SESSION["error_messages"][] = "Invalid Login";
 		return false;
 	}
 
@@ -54,18 +54,18 @@
 		$email_address = htmlspecialchars(trim($email_address));
 
 		if (filter_var($email_address, FILTER_VALIDATE_EMAIL) === false) {
-			$_SESSION["error_message"][] = "Invalid Email Address";
+			$_SESSION["error_messages"][] = "Invalid Email Address";
 		}
 
 		if (emailaddress_checking($email_address) === true) {
-			$_SESSION["error_message"][] = "This email address is already registered";
+			$_SESSION["error_messages"][] = "This email address is already registered";
 		}
 
 		if ($password != $conf_pass) {
-			$_SESSION["error_message"][] = "Password and Confirm password are not matching";
+			$_SESSION["error_messages"][] = "Password and Confirm password are not matching";
 		}
 
-		if (!isset($_SESSION["error_message"])) {
+		if (!isset($_SESSION["error_messages"])) {
 			$password = encrypt_pwd($password);
 			$unique_id = rand(time(), 1000);
 			$image = isset($_FILES['image']) ? upload_file($_FILES['image'], "D:/Ajay Programmers/Xampp/htdocs/Writers_House/img/", ["jpg", "jpeg", "png"]) : "";
@@ -81,7 +81,7 @@
 			$stmt->bindParam(':image', $image, PDO::PARAM_STR);
 
 			if ($stmt->execute()) {
-				$_SESSION["success_message"][] = "Successfully Registered";
+				$_SESSION["success_messages"][] = "Successfully Registered";
 				return true;
 			}
 
@@ -131,7 +131,7 @@
 		$stmt->bindParam(':rating', $rating, PDO::PARAM_STR);
 
 		if ($stmt->execute()) {
-			$_SESSION["success_message"][] = "Feedback Added Successfully";
+			$_SESSION["success_messages"][] = "Feedback Added Successfully";
 			return true;
 		}
 	}
@@ -174,6 +174,87 @@
 		{
 			$result = $stmt->fetch(PDO::FETCH_ASSOC);
 			return (int) $result['count'];
+		}
+		return false;
+	}
+
+	function get_genre_list()
+	{
+		global $db;
+		$sql = "SELECT * FROM genre";
+		$stmt = $db->prepare($sql);
+
+		if($stmt->execute())
+		{
+			return $stmt->fetchAll(PDO::FETCH_ASSOC);
+		}
+		return false;
+	}
+
+	function add_genre($data)
+	{
+		global $db;
+		extract($data);
+
+		if(genre_checking($name) === true)
+		{
+			$_SESSION["error_messages"][] = "Genre already available";
+		}
+
+		if(!isset($_SESSION["error_messages"]))
+		{
+			$sql = "INSERT into genre(name) VALUES (:name)";
+			$stmt = $db->prepare($sql);
+			$stmt->bindParam(':name',$name,PDO::PARAM_STR);
+
+			if($stmt->execute())
+			{
+				$_SESSION["success_messages"][] = "Successfully added";
+				return true;
+			}
+			return false;
+		}
+	}
+
+	function genre_checking($name)
+	{
+		global $db;
+		$sql = "SELECT COUNT(1) as 'count' FROM genre WHERE name = :name AND deleted = '0'";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':name',$name,PDO::PARAM_STR);
+
+		if($stmt->execute())
+		{
+			$result=$stmt->fetch(PDO::FETCH_ASSOC)["count"];
+			return $result > 0 ? true : false;
+		}
+		return false;
+	}
+
+	function genre_by_id($id)
+	{
+		global $db;
+		$sql = "SELECT * from genre WHERE id = $id";
+		$stmt = $db->prepare($sql);
+
+		if($stmt->execute())
+		{
+			return $stmt->fetchA(PDO::FETCH_ASSOC);
+		}
+		return false;
+	}
+
+	function activate_deactivate_genre($id, $deactivate)
+	{
+		global $db;
+		$sql = "UPDATE genre SET deactivate = '$deactivate', modified_timestamp = NOW() WHERE id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id',$id,PDO::PARAM_STR);
+
+		if($stmt->execute())
+		{
+			$_SESSION["success_messages"][] = "Data updated Successfully.";
+			return true;
 		}
 		return false;
 	}
