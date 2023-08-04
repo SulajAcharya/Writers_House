@@ -5,19 +5,9 @@
     if(isset($_GET["q"]) && !empty($_GET["q"]) && is_numeric($_GET["q"]))
     {
         $id = trim($_GET["q"]);
-        $genre = genre_by_id($id);
+        delete_genre_by_id($id);
     }
-    
-    if($genre["deactivate"] === "0")
-    {
-        $deactivate = '1';
-        activate_deactivate_genre($deactivate,$id);
-    }
-    else
-    {
-        $deactivate = '0';
-        activate_deactivate_genre($deactivate,$id);
-    }
+
     echo "<script>window.location='/admin/genre/';</script>";
     exit(0);
 ?>

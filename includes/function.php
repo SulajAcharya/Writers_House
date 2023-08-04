@@ -181,7 +181,7 @@
 	function get_genre_list()
 	{
 		global $db;
-		$sql = "SELECT * FROM genre";
+		$sql = "SELECT * FROM genre WHERE deleted = '0'";
 		$stmt = $db->prepare($sql);
 
 		if($stmt->execute())
@@ -234,26 +234,59 @@
 	function genre_by_id($id)
 	{
 		global $db;
-		$sql = "SELECT * from genre WHERE id = $id";
+		$sql = "SELECT * from genre WHERE genre_id = :id";
 		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
 		if($stmt->execute())
 		{
-			return $stmt->fetchA(PDO::FETCH_ASSOC);
+			return $stmt->fetch(PDO::FETCH_ASSOC);
 		}
 		return false;
 	}
 
-	function activate_deactivate_genre($id, $deactivate)
+	function activate_deactivate_genre($deactivate,$id)
 	{
 		global $db;
-		$sql = "UPDATE genre SET deactivate = '$deactivate', modified_timestamp = NOW() WHERE id = :id";
+		$sql = "UPDATE genre SET deactivate = :deactivate, modified_time = NOW() WHERE genre_id = :id";
 		$stmt = $db->prepare($sql);
-		$stmt->bindParam(':id',$id,PDO::PARAM_STR);
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+		$stmt->bindParam(':deactivate',$deactivate, PDO::PARAM_STR);
+
+		if ($stmt->execute())
+		{
+			$_SESSION["success_messages"][] = "Data Updated Successfully.";
+			return true;
+		}
+		return false;
+	}
+
+	function update_genre($name,$id)
+	{
+		global $db;
+		$sql = "UPDATE genre SET name = :name, modified_time = NOW() WHERE genre_id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+		$stmt->bindParam(':name', $name, PDO::PARAM_STR);
+
+		if ($stmt->execute())
+		{
+			$_SESSION["success_messages"][] = "Data Updated Successfully.";
+			return true;
+		}
+		return false;
+	}
+
+	function delete_genre_by_id($id)
+	{
+		global $db;
+		$sql = "UPDATE genre SET deleted = '1', deleted_time = NOW() WHERE genre_id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
 		if($stmt->execute())
 		{
-			$_SESSION["success_messages"][] = "Data updated Successfully.";
+			$_SESSION["success_messages"][] = "Data deleted Successfully.";
 			return true;
 		}
 		return false;
