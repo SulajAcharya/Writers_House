@@ -267,7 +267,7 @@
 		$sql = "UPDATE genre SET name = :name, modified_time = NOW() WHERE genre_id = :id";
 		$stmt = $db->prepare($sql);
 		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
-		$stmt->bindParam(':name', $name, PDO::PARAM_STR);
+		$stmt->bindParam(':name',$name, PDO::PARAM_STR);
 
 		if ($stmt->execute())
 		{
