@@ -291,4 +291,63 @@
 		}
 		return false;
 	}
+
+	function user_list()
+	{
+		global $db;
+		$sql = "SELECT * FROM user WHERE role = 'user'";
+		$stmt = $db->prepare($sql);
+
+		if($stmt->execute())
+		{
+			return $stmt->fetchAll(PDO::FETCH_ASSOC);
+		}
+		return false;
+	}
+
+	function user_by_id($id)
+	{
+		global $db;
+		$sql = "SELECT * from user WHERE user_id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+		if($stmt->execute())
+		{
+			return $stmt->fetch(PDO::FETCH_ASSOC);
+		}
+		return false;
+	}
+
+	function verify_user($verified,$id)
+	{
+		global $db;
+		$sql = "UPDATE user SET verified = :verified, verified_time = NOW() WHERE user_id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+		$stmt->bindParam(':verified',$verified, PDO::PARAM_STR);
+
+		if ($stmt->execute())
+		{
+			$_SESSION["success_messages"][] = "Data Updated Successfully.";
+			return true;
+		}
+		return false;
+	}
+
+	function block_user($block,$id)
+	{
+		global $db;
+		$sql = "UPDATE user SET block = :block, modified_time = NOW() WHERE user_id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+		$stmt->bindParam(':block',$block, PDO::PARAM_STR);
+
+		if ($stmt->execute())
+		{
+			$_SESSION["success_messages"][] = "Data Updated Successfully.";
+			return true;
+		}
+		return false;
+	}
 ?>
