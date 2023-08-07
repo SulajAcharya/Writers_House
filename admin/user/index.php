@@ -18,6 +18,7 @@
                                     <tr>
                                         <th>Sr. No.</th>
                                         <th>Email Address</th>
+                                        <th>Role</th>
                                         <th>Verified</th>
                                         <th>Block</th>
                                         <th>Detail</th>
@@ -32,6 +33,15 @@
                                     <tr class="text-center">
                                         <td><?php echo $number; ?></td>
                                         <td><?php echo $user['email_address']; ?></td>
+                                        <td>
+                                            <?php if($user["role"] === "user"): ?>
+                                                <a href="/admin/user/role_update?q=<?php echo $user["user_id"]; ?>" class="btn btn-sm btn-primary mx-auto d-block col-6" id="user" name="user"><span class="fas fa-user"></span> User</a>
+                                            <?php elseif($user["role"] === "writer"): ?>
+                                                <a href="/admin/user/role_update?q=<?php echo $user["user_id"]; ?>" class="btn btn-sm btn-warning mx-auto d-block col-6" id="writer" name="writer"><span class="fas fa-user-edit"></span> Writer</a>
+                                            <?php else: ?>
+                                                <a href="/admin/user/role_update?q=<?php echo $user["user_id"]; ?>" class="btn btn-sm btn-danger mx-auto d-block col-6" id="admin" name="admin"><span class="fas fa-user-cog"></span> Admin</a>
+                                            <?php endif; ?>
+                                        </td>
                                         <td>
                                             <?php if($user["verified"] === "0"): ?>
                                                 <a href="/admin/user/verify_user?q=<?php echo $user["user_id"]; ?>" class="btn btn-sm btn-warning mx-auto d-block col-6" id="p_verified" name="p_verified"><span class="fa fa-dot-circle"></span> Not Verified</a>

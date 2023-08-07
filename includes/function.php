@@ -295,7 +295,7 @@
 	function user_list()
 	{
 		global $db;
-		$sql = "SELECT * FROM user WHERE role = 'user'";
+		$sql = "SELECT * FROM user";
 		$stmt = $db->prepare($sql);
 
 		if($stmt->execute())
@@ -342,6 +342,22 @@
 		$stmt = $db->prepare($sql);
 		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 		$stmt->bindParam(':block',$block, PDO::PARAM_STR);
+
+		if ($stmt->execute())
+		{
+			$_SESSION["success_messages"][] = "Data Updated Successfully.";
+			return true;
+		}
+		return false;
+	}
+
+	function update_role($role,$id)
+	{
+		global $db;
+		$sql = "UPDATE user SET role = :role, modified_time = NOW() WHERE user_id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+		$stmt->bindParam(':role',$role, PDO::PARAM_STR);
 
 		if ($stmt->execute())
 		{
