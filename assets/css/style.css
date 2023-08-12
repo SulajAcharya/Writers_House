@@ -47,3 +47,9 @@
 #admin .data {
     font-size: 60px;
 }
+
+#explore .action {
+    background-image: url('/assets/img/action_bg.png'); 
+    background-repeat: no-repeat;
+    height: 10vw;
+}
