@@ -14,128 +14,202 @@
                             <a href="" class="text-decoration-none">
                                 <div class="card-body shadow rounded action">
                                     <div class="card-body">
-                                        <div class="card-title pt-4 mt-5">Hello</div>
+                                        <div class="card-title pt-4 mt-5 btitle">Action</div>
                                     </div>
                                 </div>
                             </a>
                         </div>
                         <div class="col-md-3">
-                            <div class="card shadow rounded">
-                                <img class="img-fluid rounded" src="assets/img/adventure_bg.png" alt="Genre 2">
-                            </div>
+                            <a href="" class="text-decoration-none">
+                                <div class="card-body shadow rounded adventure">
+                                    <div class="card-body">
+                                        <div class="card-title pt-4 mt-5 wtitle">Adventure</div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                         <div class="col-md-3">
-                            <div class="card shadow rounded">
-                                <img class="img-fluid rounded" src="assets/img/article_png.png" alt="Genre 3">
-                            </div>
+                            <a href="" class="text-decoration-none">
+                                <div class="card-body shadow rounded article">
+                                    <div class="card-body">
+                                        <div class="card-title pt-4 mt-5 btitle">Article</div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                         <div class="col-md-3">
-                            <div class="card shadow rounded">
-                                <img class="img-fluid rounded" src="assets/img/crime_bg.png" alt="Genre 4">
-                            </div>
+                            <a href="" class="text-decoration-none">
+                                <div class="card-body shadow rounded crime">
+                                    <div class="card-body">
+                                        <div class="card-title pt-4 mt-5 wtitle">Crime</div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                     </div>
-
                     <div class="row mb-4">
-                        <div class="col-md-3">
-                            <div class="card shadow rounded">
-                                <img class="img-fluid rounded" src="assets/img/drama_bg.png" alt="Genre 5">
-                            </div>
+                    <div class="col-md-3">
+                            <a href="" class="text-decoration-none">
+                                <div class="card-body shadow rounded drama">
+                                    <div class="card-body">
+                                        <div class="card-title pt-4 mt-5 btitle">Drama</div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                         <div class="col-md-3">
-                            <div class="card shadow rounded">
-                                <img class="img-fluid rounded" src="assets/img/fantasy_bg.png" alt="Genre 6">
-                            </div>
+                            <a href="" class="text-decoration-none">
+                                <div class="card-body shadow rounded fantasy">
+                                    <div class="card-body">
+                                        <div class="card-title pt-4 mt-5 wtitle">Fantasy</div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                         <div class="col-md-3">
-                            <div class="card shadow rounded">
-                                <img class="img-fluid rounded" src="assets/img/fiction_bg.png" alt="Genre 7">
-                            </div>
+                            <a href="" class="text-decoration-none">
+                                <div class="card-body shadow rounded fiction">
+                                    <div class="card-body">
+                                        <div class="card-title pt-4 mt-5 btitle">Fiction</div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                         <div class="col-md-3">
-                            <div class="card shadow rounded">
-                                <img class="img-fluid rounded" src="assets/img/historic_bg.png" alt="Genre 8">
-                            </div>
+                            <a href="" class="text-decoration-none">
+                                <div class="card-body shadow rounded historic">
+                                    <div class="card-body">
+                                        <div class="card-title pt-4 mt-5 wtitle">Historic</div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                     </div>
-
                     <div class="row mb-4">
-                        <div class="col-md-3">
-                            <div class="card shadow rounded">
-                                <img class="img-fluid rounded" src="assets/img/historicfiction_bg.png" alt="Genre 9">
-                            </div>
+                    <div class="col-md-3">
+                            <a href="" class="text-decoration-none">
+                                <div class="card-body shadow rounded historicfiction">
+                                    <div class="card-body">
+                                        <div class="card-title pt-4 mt-5 wtitle">Historic Fiction</div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                         <div class="col-md-3">
-                            <div class="card shadow rounded">
-                                <img class="img-fluid rounded" src="assets/img/horror_bg.png" alt="Genre 10">
-                            </div>
+                            <a href="" class="text-decoration-none">
+                                <div class="card-body shadow rounded horror">
+                                    <div class="card-body">
+                                        <div class="card-title pt-4 mt-5 wtitle">Horror</div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                         <div class="col-md-3">
-                            <div class="card shadow rounded">
-                                <img class="img-fluid rounded" src="assets/img/humor_bg.png" alt="Genre 11">
-                            </div>
+                            <a href="" class="text-decoration-none">
+                                <div class="card-body shadow rounded humor">
+                                    <div class="card-body">
+                                        <div class="card-title pt-4 mt-5 wtitle">Humor</div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                         <div class="col-md-3">
-                            <div class="card shadow rounded">
-                                <img class="img-fluid rounded" src="assets/img/investigation_bg.png" alt="Genre 12">
-                            </div>
+                            <a href="" class="text-decoration-none">
+                                <div class="card-body shadow rounded investigation">
+                                    <div class="card-body">
+                                        <div class="card-title pt-4 mt-5 wtitle">Investigation</div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                     </div>
-
                     <div class="row mb-4">
-                        <div class="col-md-3">
-                            <div class="card shadow rounded">
-                                <img class="img-fluid rounded" src="assets/img/life.png" alt="Genre 13">
-                            </div>
+                    <div class="col-md-3">
+                            <a href="" class="text-decoration-none">
+                                <div class="card-body shadow rounded life">
+                                    <div class="card-body">
+                                        <div class="card-title pt-4 mt-5 wtitle">Life</div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                         <div class="col-md-3">
-                            <div class="card shadow rounded">
-                                <img class="img-fluid rounded" src="assets/img/mystery_bg.png" alt="Genre 14">
-                            </div>
+                            <a href="" class="text-decoration-none">
+                                <div class="card-body shadow rounded mystery">
+                                    <div class="card-body">
+                                        <div class="card-title pt-4 mt-5 wtitle">Mystery</div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                         <div class="col-md-3">
-                            <div class="card shadow rounded rounded">
-                                <img class="img-fluid rounded" src="assets/img/nonfiction_bg.png" alt="Genre 15">
-                            </div>
+                            <a href="" class="text-decoration-none">
+                                <div class="card-body shadow rounded nonfiction">
+                                    <div class="card-body">
+                                        <div class="card-title pt-4 mt-5 btitle">Non-Fiction</div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                         <div class="col-md-3">
-                            <div class="card shadow rounded">
-                                <img class="img-fluid rounded" src="assets/img/poetry_bg.png" alt="Genre 16">
-                            </div>
+                            <a href="" class="text-decoration-none">
+                                <div class="card-body shadow rounded poetry">
+                                    <div class="card-body">
+                                        <div class="card-title pt-4 mt-5 btitle">Poetry</div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                     </div>
-
                     <div class="row mb-4">
-                        <div class="col-md-3">
-                            <div class="card shadow rounded">
-                                <img class="img-fluid rounded" src="assets/img/romance_png.png" alt="Genre 17">
-                            </div>
+                    <div class="col-md-3">
+                            <a href="" class="text-decoration-none">
+                                <div class="card-body shadow rounded romance">
+                                    <div class="card-body">
+                                        <div class="card-title pt-4 mt-5 btitle">Romance</div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                         <div class="col-md-3">
-                            <div class="card shadow rounded">
-                                <img class="img-fluid rounded" src="assets/img/science_fiction.png" alt="Genre 18">
-                            </div>
+                            <a href="" class="text-decoration-none">
+                                <div class="card-body shadow rounded science_fiction">
+                                    <div class="card-body">
+                                        <div class="card-title pt-4 mt-5 wtitle">Science Fiction</div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                         <div class="col-md-3">
-                            <div class="card shadow rounded">
-                                <img class="img-fluid rounded" src="assets/img/shortstory_bg.png" alt="Genre 19">
-                            </div>
+                            <a href="" class="text-decoration-none">
+                                <div class="card-body shadow rounded short_story">
+                                    <div class="card-body">
+                                        <div class="card-title pt-4 mt-5 btitle">Short Story</div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                         <div class="col-md-3">
-                            <div class="card shadow rounded">
-                                <img class="img-fluid rounded" src="assets/img/superhero_bg.png" alt="Genre 20">
-                            </div>
+                            <a href="" class="text-decoration-none">
+                                <div class="card-body shadow rounded super_hero">
+                                    <div class="card-body">
+                                        <div class="card-title pt-4 mt-5 wtitle">Super Hero</div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="card shadow rounded">
-                                <img class="img-fluid rounded" src="assets/img/thriller_bg.png" alt="Genre 21">
-                            </div>
+                    <div class="row mb-4">
+                    <div class="col-md-3">
+                            <a href="" class="text-decoration-none">
+                                <div class="card-body shadow rounded thriller">
+                                    <div class="card-body">
+                                        <div class="card-title pt-4 mt-5 wtitle">Thriller</div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                     </div>
-
                 </div>
 
             </div>
