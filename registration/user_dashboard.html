@@ -13,49 +13,42 @@
   </style>
 </head>
 <body>
-
-
-
-
-<div class="container my-5">
-  <div class="row">
-    <div class="col-md-6">
-      
+<div class="container my-5" id="user_detail">
+  <div class="row mb-5">
+    <div class="col-md-2">
       <img  src="https://via.placeholder.com/150" alt="User Photo" class="img mb-3" id="user" >
-      <div class="col-mb-4"> <h3>Username</h3></div>
-     
-
-      Description <br>
+    </div>
+    <div class="col-md-6 mb-5">
+      <div class="col-mb-4 mb-3 mt-2 h3">Username</div>
+      <p class="mb-3">Description</p>
       <button type="button" class="btn btn-primary">Upgrade To Writer</button>
     </div>
-    
   </div>
-</div>
-
-<div class="container my-5">
-  <h3>Previous Visits</h3>
+  <div class="h4 previous">Previous Visits</div>
   <hr style = "height:2px;border-width:0;color:black;background-color:black">
   <div class="row">
     <div class="col-md-3">
-  <div class="card" >
-    
-    <div class="card-body">
-      <img class="card-img-top" src="https://via.placeholder.com/40" alt="content">
-      <h5 class="card-title">Title</h5>
-      <p class="card-text">22 June 2023</p>
-      <img class="card-text" src="C:\Users\akans\Downloads\eye-regular.svg" height="10">   22
-      <img class="card-text" src="C:\Users\akans\Downloads\message-regular.svg" height="10">   22
-      <img class="card-text" src="C:\Users\akans\Downloads\thumbs-up-regular.svg" height="10">   22
-    </div>
+      <div class="card">
+        <div class="card-body">
+          <img class="card-img-top" src="https://via.placeholder.com/40" alt="content">
+          <h5 class="card-title my-2">Title</h5>
+          <p class="card-text my-2">22 June 2023</p>
+          <div class="row">
+            <div class="col-md-4">
+              <span><i class="fa-regular fa-eye"></i> 22</span>
+            </div>
+            <div class="col-md-4">
+              <span><i class="fa-regular fa-message"></i> 22</span>
+            </div>
+            <div class="col-md-4">
+              <span><i class="fa-regular fa-thumbs-up"></i> 22</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-</div>
-</div>
-
-
-
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>

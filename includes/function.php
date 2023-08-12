@@ -366,4 +366,60 @@
 		}
 		return false;
 	}
+
+	function get_user_details_by_id()
+	{
+		global $db;
+		$user_id = $_SESSION["user_id"];
+		$sql = "SELECT * FROM user WHERE user_id = :user_id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+
+		if ($stmt->execute())
+		{
+			return $stmt->fetch(PDO::FETCH_ASSOC);
+		}
+		return false;
+	}
+
+	function get_previous_content_by_id($id)
+	{
+		global $db;
+		$sql = "SELECT * FROM previous_visit WHERE user_id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+		if ($stmt->execute())
+		{
+			return $stmt->fetchAll(PDO::FETCH_ASSOC);
+		}
+		return false;
+	}
+
+	function get_content_by_passing_id($id)
+	{
+		global $db;
+		$sql = "SELECT * FROM content WHERE content_id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+		if ($stmt->execute())
+		{
+			return $stmt->fetchAll(PDO::FETCH_ASSOC);
+		}
+		return false;
+	}
+
+	function get_comment_count($id)
+	{
+		global $db;
+		$sql = "SELECT COUNT(id) as count FROM comments WHERE content_id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id',$id,PDO::PARAM_STR);
+
+		if($stmt->execute())
+		{
+			$result = $stmt->fetch(PDO::FETCH_ASSOC);
+			return (int) $result['count'];
+		}
+		return false;
+	}
 ?>

@@ -166,3 +166,13 @@
     background-repeat: no-repeat;
     height: 10vw;
 }
+
+#user_dashboard .user_img {
+    border-radius: 50%;
+}
+#user_dashboard hr {
+    height:2px;
+    border-width:0;
+    color:black;
+    background-color:black;
+}
