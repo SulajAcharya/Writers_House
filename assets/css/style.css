@@ -47,7 +47,10 @@
 #admin .data {
     font-size: 60px;
 }
-
+#admin_nav #nav-content li a span {
+    font-size: 17.15px;
+    color: white;
+}
 #explore .wtitle{
     font-size: 30px;
     color: white;

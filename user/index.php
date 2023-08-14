@@ -36,7 +36,7 @@
                             $id = $visit["content_id"];
                             $content = get_content_by_passing_id($id);
                         ?>
-                        <img class="card-img-top" src="https://via.placeholder.com/40" alt="content">
+                        <img class="card-img-top" src="<?php echo $content["cover_img"]; ?>" alt="content">
                         <div class="card-title h5 my-2">
                             <div class="row">
                                 <div class=" col-md-6 d-flex justify-content-start">
