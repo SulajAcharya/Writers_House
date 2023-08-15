@@ -8,7 +8,7 @@
 		exit(0);
 	}
 ?>
-<nav class="navbar navbar-expand-sm shadow bg-primary navbar-dark">
+<nav class="navbar navbar-expand-sm shadow bg-primary navbar-dark" id="admin_nav">
     <div class="container">
         <a class="navbar-brand mx-5 px-3" href="/admin/">
             <span class="fw-bold">Dashboard</span>
@@ -34,14 +34,14 @@
                     </a>
                 </li>
                 <li class="nav-item dropdown mx-5 px-3">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <span class="fw-bold">Content</span>
                     </a>
                     <ul class="dropdown-menu bg-light text-dark fw-bold" aria-labelledby="navbarDropdown">
-                        <li><a class="btn dropdown-item" href="#">Content List</a></li>
-                        <li><a class="btn dropdown-item" href="#">Approved Content</a></li>
-                        <li><a class="btn dropdown-item" href="#">Disapproved Content</a></li>
-                        <li><a class="btn dropdown-item" href="#">Pending Content</a></li>
+                        <li><a class="btn dropdown-item fw-bold" href="#">Content List</a></li>
+                        <li><a class="btn dropdown-item fw-bold" href="#">Approved Content</a></li>
+                        <li><a class="btn dropdown-item fw-bold" href="#">Disapproved Content</a></li>
+                        <li><a class="btn dropdown-item fw-bold" href="#">Pending Content</a></li>
                     </ul>
                 </li>   
                 <li>

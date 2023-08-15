@@ -47,9 +47,135 @@
 #admin .data {
     font-size: 60px;
 }
+#admin_nav #nav-content li a span {
+    font-size: 17.15px;
+    color: white;
+}
+#explore .wtitle{
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    -webkit-text-stroke: 1px black;
+}
+#explore .btitle{
+    font-size: 30px;
+    color: black;
+    font-weight: bold;
+    -webkit-text-stroke: 0.5px white;
+}
 
 #explore .action {
     background-image: url('/assets/img/action_bg.png'); 
     background-repeat: no-repeat;
     height: 10vw;
+}
+#explore .adventure {
+    background-image: url('/assets/img/adventure_bg.png'); 
+    background-repeat: no-repeat;
+    height: 10vw;
+}
+#explore .article {
+    background-image: url('/assets/img/article_png.png'); 
+    background-repeat: no-repeat;
+    height: 10vw;
+}
+#explore .crime {
+    background-image: url('/assets/img/crime_bg.png'); 
+    background-repeat: no-repeat;
+    height: 10vw;
+}
+#explore .drama {
+    background-image: url('/assets/img/drama_bg.png'); 
+    background-repeat: no-repeat;
+    height: 10vw;
+}
+#explore .fantasy {
+    background-image: url('/assets/img/fantasy_bg.png'); 
+    background-repeat: no-repeat;
+    height: 10vw;
+}
+#explore .fiction {
+    background-image: url('/assets/img/fiction_bg.png'); 
+    background-repeat: no-repeat;
+    height: 10vw;
+}
+#explore .historic {
+    background-image: url('/assets/img/historic_bg.png'); 
+    background-repeat: no-repeat;
+    height: 10vw;
+}
+#explore .historicfiction {
+    background-image: url('/assets/img/historicfiction_bg.png'); 
+    background-repeat: no-repeat;
+    height: 10vw;
+}
+#explore .horror {
+    background-image: url('/assets/img/horror_bg.png'); 
+    background-repeat: no-repeat;
+    height: 10vw;
+}
+#explore .humor {
+    background-image: url('/assets/img/humor_bg.png'); 
+    background-repeat: no-repeat;
+    height: 10vw;
+}
+#explore .investigation {
+    background-image: url('/assets/img/investigation_bg.png'); 
+    background-repeat: no-repeat;
+    height: 10vw;
+}
+#explore .life {
+    background-image: url('/assets/img/life.png'); 
+    background-repeat: no-repeat;
+    height: 10vw;
+}
+#explore .mystery {
+    background-image: url('/assets/img/mystery_bg.png'); 
+    background-repeat: no-repeat;
+    height: 10vw;
+}
+#explore .nonfiction {
+    background-image: url('/assets/img/nonfiction_bg.png'); 
+    background-repeat: no-repeat;
+    height: 10vw;
+}
+#explore .poetry {
+    background-image: url('/assets/img/poetry_bg.png'); 
+    background-repeat: no-repeat;
+    height: 10vw;
+}
+#explore .romance {
+    background-image: url('/assets/img/romance_png.png'); 
+    background-repeat: no-repeat;
+    height: 10vw;
+}
+#explore .science_fiction {
+    background-image: url('/assets/img/science_fiction.png'); 
+    background-repeat: no-repeat;
+    height: 10vw;
+}
+#explore .short_story {
+    background-image: url('/assets/img/shortstory_bg.png'); 
+    background-repeat: no-repeat;
+    height: 10vw;
+}
+#explore .super_hero {
+    background-image: url('/assets/img/superhero_bg.png'); 
+    background-repeat: no-repeat;
+    height: 10vw;
+}
+#explore .thriller {
+    background-image: url('/assets/img/thriller_bg.png'); 
+    background-repeat: no-repeat;
+    height: 10vw;
+}
+
+#user_dashboard .user_img {
+    border-radius: 50%;
+}
+#user_dashboard hr {
+    height:2px;
+    border-width:0;
+    color:black;
+    background-color:black;
 }

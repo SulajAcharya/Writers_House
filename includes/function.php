@@ -295,7 +295,7 @@
 	function user_list()
 	{
 		global $db;
-		$sql = "SELECT * FROM user";
+		$sql = "SELECT * FROM user WHERE NOT role = 'writer'";
 		$stmt = $db->prepare($sql);
 
 		if($stmt->execute())
@@ -365,5 +365,163 @@
 			return true;
 		}
 		return false;
+	}
+
+	function get_user_details_by_id()
+	{
+		global $db;
+		$user_id = $_SESSION["user_id"];
+		$sql = "SELECT * FROM user WHERE user_id = :user_id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+
+		if ($stmt->execute())
+		{
+			return $stmt->fetch(PDO::FETCH_ASSOC);
+		}
+		return false;
+	}
+
+	function writer_list()
+	{
+		global $db;
+		$sql = "SELECT * FROM user WHERE role = 'writer'";
+		$stmt = $db->prepare($sql);
+
+		if($stmt->execute())
+		{
+			return $stmt->fetchAll(PDO::FETCH_ASSOC);
+		}
+		return false;
+	}
+
+	function writer_by_id($id)
+	{
+		global $db;
+		$sql = "SELECT * from user WHERE user_id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+		if($stmt->execute())
+		{
+			return $stmt->fetch(PDO::FETCH_ASSOC);
+		}
+		return false;
+	}
+
+	function verify_writer($verified,$id)
+	{
+		global $db;
+		$sql = "UPDATE user SET verified = :verified, verified_time = NOW() WHERE user_id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+		$stmt->bindParam(':verified',$verified, PDO::PARAM_STR);
+
+		if ($stmt->execute())
+		{
+			$_SESSION["success_messages"][] = "Data Updated Successfully.";
+			return true;
+		}
+		return false;
+	}
+
+	function block_writer($block,$id)
+	{
+		global $db;
+		$sql = "UPDATE user SET block = :block, modified_time = NOW() WHERE user_id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+		$stmt->bindParam(':block',$block, PDO::PARAM_STR);
+
+		if ($stmt->execute())
+		{
+			$_SESSION["success_messages"][] = "Data Updated Successfully.";
+			return true;
+		}
+		return false;
+	}
+
+	function get_previous_content_by_id($id)
+	{
+		global $db;
+		$sql = "SELECT * FROM previous_visit WHERE user_id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+		if ($stmt->execute())
+		{
+			return $stmt->fetchAll(PDO::FETCH_ASSOC);
+		}
+		return false;
+	}
+
+	function get_content_by_passing_id($id)
+	{
+		global $db;
+		$sql = "SELECT * FROM content WHERE content_id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+		if ($stmt->execute())
+		{
+			return $stmt->fetchAll(PDO::FETCH_ASSOC);
+		}
+		return false;
+	}
+
+	function get_comment_count($id)
+	{
+		global $db;
+		$sql = "SELECT COUNT(id) as count FROM comments WHERE content_id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id',$id,PDO::PARAM_STR);
+
+		if($stmt->execute())
+		{
+			$result = $stmt->fetch(PDO::FETCH_ASSOC);
+			return (int) $result['count'];
+		}
+		return false;
+	}
+
+	function get_writer_content_count($id)
+	{
+		global $db;
+		$sql = "SELECT COUNT(content_id) as count FROM content WHERE user_id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id',$id,PDO::PARAM_STR);
+
+		if($stmt->execute())
+		{
+			$result = $stmt->fetch(PDO::FETCH_ASSOC);
+			return (int) $result['count'];
+		}
+		return false;
+	}
+
+	function get_writer_read_count($id)
+	{
+		global $db;
+		$sql = "SELECT SUM(read_count) as count FROM content WHERE user_id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id',$id,PDO::PARAM_STR);
+
+		if($stmt->execute())
+		{
+			$result = $stmt->fetch(PDO::FETCH_ASSOC);
+			return (int) $result['count'];
+		}
+		return false;
+	}
+
+	function get_writer_content($id)
+	{
+		global $db;
+		$sql = "SELECT * FROM content WHERE user_id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+		if ($stmt->execute())
+		{
+			return $stmt->fetchAll(PDO::FETCH_ASSOC);
+		}
+		return false;		
 	}
 ?>
