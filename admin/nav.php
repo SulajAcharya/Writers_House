@@ -1,5 +1,4 @@
 <?php
-    $page_title = "Admin Dashboard";
     require_once($_SERVER["DOCUMENT_ROOT"]."/includes/init.php");
     
     if(!isset($_SESSION["user_id"]) || empty($_SESSION["user_id"]) || !is_numeric($_SESSION["user_id"]) || !isset($_SESSION["role"]) || $_SESSION["role"] !== "admin")
@@ -19,17 +18,17 @@
         <div class="collapse navbar-collapse" id="nav-content">
             <ul class="navbar-nav">
                 <li class="nav-item mx-5 px-3">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/admin/genre/">
                         <span class="fw-bold">Genre</span>
                     </a>
                 </li>
                 <li class="nav-item mx-5 px-3">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/admin/user/">
                         <span class="fw-bold">User</span>
                     </a>
                 </li>
                 <li class="nav-item mx-5 px-3">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/admin/writer">
                         <span class="fw-bold">Writer</span>
                     </a>
                 </li>
@@ -38,14 +37,14 @@
                         <span class="fw-bold">Content</span>
                     </a>
                     <ul class="dropdown-menu bg-light text-dark fw-bold" aria-labelledby="navbarDropdown">
-                        <li><a class="btn dropdown-item fw-bold" href="#">Content List</a></li>
-                        <li><a class="btn dropdown-item fw-bold" href="#">Approved Content</a></li>
-                        <li><a class="btn dropdown-item fw-bold" href="#">Disapproved Content</a></li>
-                        <li><a class="btn dropdown-item fw-bold" href="#">Pending Content</a></li>
+                        <li><a class="btn dropdown-item fw-bold" href="/admin/content/all_content_list">Content List</a></li>
+                        <li><a class="btn dropdown-item fw-bold" href="/admin/content/approve_content_list">Approved Content</a></li>
+                        <li><a class="btn dropdown-item fw-bold" href="/admin/content/disapprove_content_list">Disapproved Content</a></li>
+                        <li><a class="btn dropdown-item fw-bold" href="/admin/content/pending_content_list">Pending Content</a></li>
                     </ul>
                 </li>   
                 <li>
-                  <a class="nav-link mx-5 px-3" href="#">
+                  <a class="nav-link mx-5 px-3" href="/admin/change_password">
                     <span class="fw-bold">Change Password</span>
                   </a>
                 </li> 

@@ -43,14 +43,14 @@
                                             <?php endif; ?>
                                         </td>
                                         <td>
-                                            <?php if($writer["verified"] === "0"): ?>
+                                            <?php if($writer["verified"] == "0"): ?>
                                                 <a href="/admin/writer/verify_writer?q=<?php echo $writer["user_id"]; ?>" class="btn btn-sm btn-warning mx-auto d-block col-6" id="p_verified" name="p_verified"><span class="fa fa-dot-circle"></span> Not Verified</a>
                                             <?php else: ?>
                                                 <button class="btn btn-sm btn-success mx-auto d-block col-6" id="verified" name="verified"><span class="fa fa-check-square"></span> Verified</button>
                                             <?php endif; ?>
                                         </td>
                                         <td>
-                                            <?php if($writer["block"] === "0"): ?>
+                                            <?php if($writer["block"] == "0"): ?>
                                                 <a href="/admin/writer/block_writer?q=<?php echo $writer["user_id"]; ?>" class="btn btn-sm btn-success mx-auto d-block col-6" id="n_block" name="n_block"><span class="fa-solid fa-check"></span> Not Block</a>
                                             <?php else: ?>
                                                 <a href="/admin/writer/block_writer?q=<?php echo $writer["user_id"]; ?>" class="btn btn-sm btn-danger mx-auto d-block col-6" id="block" name="block"><span class="fa-solid fa-close"></span> Blocked</a>

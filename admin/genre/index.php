@@ -63,7 +63,7 @@
                                             <a href="/admin/genre/edit_genre?q=<?php echo $genre["genre_id"]; ?>" class="btn btn-sm btn-success mx-auto d-block col-6" id="edit" name="edit"><span class="fa-solid fa-edit"></span> Edit</a>
                                         </td>
                                         <td>
-                                            <?php if($genre["deactivate"] === "0"): ?>
+                                            <?php if($genre["deactivate"] == "0"): ?>
                                                 <a href="/admin/genre/activate_deactivate_genre?q=<?php echo $genre["genre_id"]; ?>" class="btn btn-sm btn-success mx-auto d-block col-3" id="activate" name="activate"><span class="fa-solid fa-check"></span> Activate</a>
                                             <?php else: ?>
                                                 <a href="/admin/genre/activate_deactivate_genre?q=<?php echo $genre["genre_id"]; ?>" class="btn btn-sm btn-danger mx-auto d-block col-3" id="deactivate" name="deactivate"><span class="fa-solid fa-close"></span> Deactivate</a>

@@ -382,6 +382,20 @@
 		return false;
 	}
 
+	function get_user_details_by_passing_id($id)
+	{
+		global $db;
+		$sql = "SELECT * FROM user WHERE user_id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+		if ($stmt->execute())
+		{
+			return $stmt->fetch(PDO::FETCH_ASSOC);
+		}
+		return false;
+	}
+
 	function writer_list()
 	{
 		global $db;
@@ -462,7 +476,7 @@
 		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 		if ($stmt->execute())
 		{
-			return $stmt->fetchAll(PDO::FETCH_ASSOC);
+			return $stmt->fetch(PDO::FETCH_ASSOC);
 		}
 		return false;
 	}
@@ -523,5 +537,138 @@
 			return $stmt->fetchAll(PDO::FETCH_ASSOC);
 		}
 		return false;		
+	}
+
+	function get_content_list()
+	{
+		global $db;
+		$sql = "SELECT * FROM content";
+		$stmt = $db->prepare($sql);
+		if ($stmt->execute())
+		{
+			return $stmt->fetchAll(PDO::FETCH_ASSOC);
+		}
+		return false;
+	}
+
+	function get_pending_content_list()
+	{
+		global $db;
+		$sql = "SELECT * FROM content WHERE approved = '0'";
+		$stmt = $db->prepare($sql);
+		if ($stmt->execute())
+		{
+			return $stmt->fetchAll(PDO::FETCH_ASSOC);
+		}
+		return false;
+	}
+
+	function get_approve_content_list()
+	{
+		global $db;
+		$sql = "SELECT * FROM content WHERE approved = '1'";
+		$stmt = $db->prepare($sql);
+		if ($stmt->execute())
+		{
+			return $stmt->fetchAll(PDO::FETCH_ASSOC);
+		}
+		return false;
+	}
+
+	function get_disapprove_content_list()
+	{
+		global $db;
+		$sql = "SELECT * FROM content WHERE approved = '-1'";
+		$stmt = $db->prepare($sql);
+		if ($stmt->execute())
+		{
+			return $stmt->fetchAll(PDO::FETCH_ASSOC);
+		}
+		return false;
+	}
+
+	function get_content_read_count($id)
+	{
+		global $db;
+		$sql = "SELECT read_count as count FROM content WHERE content_id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id',$id,PDO::PARAM_STR);
+
+		if($stmt->execute())
+		{
+			$result = $stmt->fetch(PDO::FETCH_ASSOC);
+			return (int) $result['count'];
+		}
+		return false;		
+	}
+
+	function get_content_like_count($id)
+	{
+		global $db;
+		$sql = "SELECT likes as count FROM content WHERE content_id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id',$id,PDO::PARAM_STR);
+
+		if($stmt->execute())
+		{
+			$result = $stmt->fetch(PDO::FETCH_ASSOC);
+			return (int) $result['count'];
+		}
+		return false;		
+	}
+
+	function approve_content($id)
+	{
+		global $db;
+		$sql = "UPDATE content SET approved = '1', modified_time = NOW() WHERE content_id = :id";
+		$stmt =  $db->prepare($sql);
+		$stmt->bindParam(':id',$id,PDO::PARAM_STR);
+		
+		if($stmt->execute())
+		{
+			return true;
+		}
+		return false;
+	}
+
+	function disapprove_content($id)
+	{
+		global $db;
+		$sql = "UPDATE content SET approved = '-1', disapprove_time = NOW() WHERE content_id = :id";
+		$stmt =  $db->prepare($sql);
+		$stmt->bindParam(':id',$id,PDO::PARAM_STR);
+		
+		if($stmt->execute())
+		{
+			return true;
+		}
+		return false;
+	}
+
+
+	function change_password($data)
+	{
+		global $db;
+		extract($data);
+		$user_id = $_SESSION["user_id"];
+
+		if ($password != $c_password) {
+			$_SESSION["error_messages"][] = "Password and Confirm password are not matching";
+		}
+
+		if (!isset($_SESSION["error_messages"])) {
+			$password = encrypt_pwd($password);
+			$sql = "UPDATE user SET password = :password WHERE user_id = :user_id";
+			$stmt = $db->prepare($sql);
+			$stmt->bindParam(':password', $password, PDO::PARAM_STR);
+			$stmt->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+
+			if ($stmt->execute()) {
+				$_SESSION["success_messages"][] = "Successfully Password Change";
+				return true;
+			}
+
+			return false;
+		}
 	}
 ?>
