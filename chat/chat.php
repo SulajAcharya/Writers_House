@@ -13,7 +13,22 @@
                     <p class="h4">Ajay Kumar</p>    
                 </div>
                 <div class="chat-box card-body">
-                    
+                    <div class="row mb-4" id="incoming_msg">
+                        <div class="detail">
+                            <div class="row">
+                                <p class="d-flex justify-content-center fw-bold">
+                                    Hi Machi
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-4" id="outgoing_msg">
+                        <div class="detail">
+                            <p class="d-flex justify-content-center fw-bold">
+                                Vanakkam Machi
+                            </p>
+                        </div>
+                    </div>
                 </div>
                 <div class="chat_input input-group mb-3">
                     <input type="text" name="outgoing_id" value="" hidden>
