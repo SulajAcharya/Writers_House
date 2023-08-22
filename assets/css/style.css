@@ -231,8 +231,22 @@
     overflow-x: hidden;
 }
 
+#chat .chat-header {
+    margin-bottom: 0;
+    padding: 18px 30px;
+}
+#chat .chat-header img {
+    height: 45px;
+    width: 45px;
+    margin: 0 15px;
+    border-radius: 50%;
+}
+#chat .chat-header span {
+    font-size: 17px;
+    font-weight: 500;
+}
 .chat-box{
-    height: 500px;
+    height: 74vh;
     background: #f7f7f7;
     overflow-y: auto;
     padding: 10px 30px 20px 30px;
@@ -262,10 +276,15 @@
 
 #outgoing_msg .detail {
     margin-left: auto;
-    max-width: calc(100% - 500px);
+    max-width: calc(100% - 490px);
+    margin-right: 10px;
 }
 #outgoing_msg .detail p {
     color: #fff;
     background: #2091F9;
     border-radius: 18px 18px 0 18px;
+}
+
+#message #profile_pic {
+    border-radius: 50%;
 }
