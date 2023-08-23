@@ -702,4 +702,21 @@
 		}
 		return false;
 	}
+
+	function get_chat($id, $outgoing_id)
+	{
+		global $db;
+
+		$sql = "SELECT * FROM chat WHERE incoming_id = :id AND outgoing_id = :outgoing_id 
+				OR incoming_id = :outgoing_id AND outgoing_id = :id ORDER BY id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_STR);
+		$stmt->bindParam(':outgoing_id', $outgoing_id, PDO::PARAM_STR);
+		if ($stmt->execute()) {
+			if ($stmt->rowCount()) {
+				return $stmt->fetchAll(PDO::FETCH_ASSOC);
+			}
+		}
+		return false;
+	}
 ?>
