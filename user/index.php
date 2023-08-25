@@ -50,9 +50,7 @@
                             </div>
                         </div>
                         <p class="card-text my-2">22 June 2023
-                            <?php
-                                echo strrev(substr($content["created_time"],0,10));
-                            ?>
+                        <?php echo substr($content['start_time'],8,2)."-".substr($content['start_time'],5,2)."-".substr($content['start_time'],0,4); ?>
                         </p>
                         <div class="row">
                             <?php

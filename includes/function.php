@@ -305,6 +305,19 @@
 		return false;
 	}
 
+	function chat_list()
+	{
+		global $db;
+		$sql = "SELECT * FROM user";
+		$stmt = $db->prepare($sql);
+
+		if($stmt->execute())
+		{
+			return $stmt->fetchAll(PDO::FETCH_ASSOC);
+		}
+		return false;
+	}
+
 	function user_by_id($id)
 	{
 		global $db;
@@ -670,5 +683,40 @@
 
 			return false;
 		}
+	}
+
+	function insert_chat($data)
+	{
+		global $db;
+		extract($data);
+
+		$sql = "INSERT INTO chat(incoming_id, outgoing_id, msg) VALUES (:incoming_id, :outgoing_id, :msg)";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':incoming_id', $incoming_id, PDO::PARAM_STR);
+		$stmt->bindParam(':outgoing_id', $outgoing_id, PDO::PARAM_STR);
+		$stmt->bindParam(':msg', $msg, PDO::PARAM_STR);
+
+		if($stmt->execute())
+		{
+			return true;
+		}
+		return false;
+	}
+
+	function get_chat($id, $outgoing_id)
+	{
+		global $db;
+
+		$sql = "SELECT * FROM chat WHERE incoming_id = :id AND outgoing_id = :outgoing_id 
+				OR incoming_id = :outgoing_id AND outgoing_id = :id ORDER BY id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_STR);
+		$stmt->bindParam(':outgoing_id', $outgoing_id, PDO::PARAM_STR);
+		if ($stmt->execute()) {
+			if ($stmt->rowCount()) {
+				return $stmt->fetchAll(PDO::FETCH_ASSOC);
+			}
+		}
+		return false;
 	}
 ?>

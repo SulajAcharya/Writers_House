@@ -1,6 +1,12 @@
 <?php
     $page_title = "Messages";
     require_once($_SERVER["DOCUMENT_ROOT"]."/includes/init.php");
+
+    if(!isset($_SESSION["user_id"]) || empty($_SESSION["user_id"]) || !is_numeric($_SESSION["user_id"]) || !isset($_SESSION["role"]))
+    {
+        header("Location: /");
+        exit(0);
+    }
 ?>
 
 <div class="container" id="message">
@@ -11,72 +17,26 @@
             </div>
             <div class="card mt-4">
                 <div class="card-body">
-                    <div class="profile my-4">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img src="" alt="">
+                    <?php
+                        $users = chat_list();
+                    ?>
+                    <?php if($users): ?>
+                        <?php foreach($users as $user): ?>
+                            <div class="profile mb-5">
+                                <a href="/chat/chat?q=<?php echo $user["user_id"]; ?>" class="text-decoration-none text-dark">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <img src="<?php echo $user["img"]; ?>" alt="profile pic" id="profile_pic">
+                                        </div>
+                                        <div class="col-9">
+                                            <div class="card-title h5"><?php echo $user["user_name"]; ?></div>
+                                            <div class="card-text">You:Hi</div>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="col-md-9">
-                                <a class="card-title h5 text-decoration-none text-dark">Ajay Kumar</a>
-                                <div class="card-text">You:Hi</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="profile my-4">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img src="" alt="">
-                            </div>
-                            <div class="col-md-9">
-                                <a class="card-title h5 text-decoration-none text-dark">Ajay Kumar</a>
-                                <div class="card-text">You:Hi</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="profile my-4">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img src="" alt="">
-                            </div>
-                            <div class="col-md-9">
-                                <a class="card-title h5 text-decoration-none text-dark">Ajay Kumar</a>
-                                <div class="card-text">You:Hi</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="profile my-4">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img src="" alt="">
-                            </div>
-                            <div class="col-md-9">
-                                <a class="card-title h5 text-decoration-none text-dark">Ajay Kumar</a>
-                                <div class="card-text">You:Hi</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="profile my-4">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img src="" alt="">
-                            </div>
-                            <div class="col-md-9">
-                                <a class="card-title h5 text-decoration-none text-dark">Ajay Kumar</a>
-                                <div class="card-text">You:Hi</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="profile my-4">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img src="" alt="">
-                            </div>
-                            <div class="col-md-9">
-                                <a class="card-title h5 text-decoration-none text-dark">Ajay Kumar</a>
-                                <div class="card-text">You:Hi</div>
-                            </div>
-                        </div>
-                    </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

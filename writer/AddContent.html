@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Content Add Page</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container col-md-6 shadow rounded mb-3 border mt-5" id="container1">
+    <div class="row mb-4 mt-3">
+        <div class="col-md-3">
+            <div class="card shadow border align-items-center justify-content-center" id="card1" style="height: 230px;">
+                <button class="btn btn-primary" style="border-radius: 50%;">+</button>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="row mb-3">
+                <div class="col-md-1">
+                    <h5>Title</h5>
+                </div>
+                <div class="col-md">
+                    <input type="text" class="form-control shadow mb-0 border" id="input_title">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <h5>One Linear</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md mb-3">
+                    <textarea class="form-control shadow rounded border" id="input_one_liner" ></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <h5>Genre</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="genreDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select</button>
+                        <div class="dropdown-menu" aria-labelledby="genreDropdown">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Adventure</a>
+                                    <a class="dropdown-item" href="#">Article</a>
+                                    <a class="dropdown-item" href="#">Crime</a>
+                                    <a class="dropdown-item" href="#">Drama</a>
+                                    <a class="dropdown-item" href="#">Fantasy</a>
+                                    <a class="dropdown-item" href="#">Fiction</a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a class="dropdown-item" href="#">Historic</a>
+                                    <a class="dropdown-item" href="#">Historic Fiction</a>
+                                    <a class="dropdown-item" href="#">Horror</a>
+                                    <a class="dropdown-item" href="#">Humor</a>
+                                    <a class="dropdown-item" href="#">Investigation</a>
+                                    <a class="dropdown-item" href="#">Life</a>
+                                    <a class="dropdown-item" href="#">Mystery</a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a class="dropdown-item" href="#">Non-Fiction</a>
+                                    <a class="dropdown-item" href="#">Poetry</a>
+                                    <a class="dropdown-item" href="#">Romance</a>
+                                    <a class="dropdown-item" href="#">Science Fiction</a>
+                                    <a class="dropdown-item" href="#">Short Story</a>
+                                    <a class="dropdown-item" href="#">Super Hero</a>
+                                    <a class="dropdown-item" href="#">Thriller</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md mb-3">
+            <textarea class="form-control shadow rounded border" style="height: 300px;" id="input_content"></textarea>
+        </div>
+    </div>
+    <div class="col-md text-end">
+        <div class="btn btn-primary mb-3">
+            Publish
+        </div>
+    </div>
+</div>
+    
+
+</div>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/popper.min.js"></script>
+
+</body>
+</html>

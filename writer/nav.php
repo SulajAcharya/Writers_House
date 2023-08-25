@@ -1,8 +1,8 @@
 <?php
-    require_once($_SERVER["DOCUMENT_ROOT"]."/includes/init.php");
+  require_once($_SERVER["DOCUMENT_ROOT"]."/includes/init.php");
     
-    if(!isset($_SESSION["user_id"]) || empty($_SESSION["user_id"]) || !is_numeric($_SESSION["user_id"]) || !isset($_SESSION["role"]) || $_SESSION["role"] !== "writer")
-    {
+  if(!isset($_SESSION["user_id"]) || empty($_SESSION["user_id"]) || !is_numeric($_SESSION["user_id"]) || !isset($_SESSION["role"]) || $_SESSION["role"] !== "writer")
+  {
 		header("Location: /");
 		exit(0);
 	}

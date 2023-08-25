@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="/assets/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/assets/css/style.css">
   <script type="text/javascript" src="/assets/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="/assets/js/writer_radio.js"></script>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow navbar-custom">
@@ -36,13 +37,13 @@
         <?php if(isset($_SESSION["user_id"]) && ($_SESSION["role"])): ?>
           <ul class="navbar-nav ms-5 mb-2 mb-lg-0">
             <li class="nav-item me-4">
-              <a class="nav-link" href="#"><span>Explore</span></a>
+              <a class="nav-link" href="/explore"><span>Explore</span></a>
             </li>
             <li class="nav-item me-4">
-              <a class="nav-link" href="#"><span>Message</span></a>
+              <a class="nav-link" href="/chat/"><span>Message</span></a>
             </li>
             <li class="nav-item me-4">
-              <a class="nav-link" href="#"><span>Account</span></a>
+              <a class="nav-link" href="/login/"><span>Account</span></a>
             </li>
             <li class="nav-item me-4">
               <a class="nav-link" href="/logout"><span>Logout</span></a>
@@ -51,7 +52,7 @@
         <?php else: ?>
           <ul class="navbar-nav ms-5 mb-2 mb-lg-0">
             <li class="nav-item me-4">
-              <a class="nav-link" href="#"><span>Explore</span></a>
+              <a class="nav-link" href="/explore"><span>Explore</span></a>
             </li>
             <li class="nav-item me-4">
               <a class="nav-link" href="/login/"><span>Sign In</span></a>
