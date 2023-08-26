@@ -1,6 +1,6 @@
 <?php
     $page_title = "Change Password";
-    require_once($_SERVER["DOCUMENT_ROOT"]."/admin/nav.php");
+    require_once($_SERVER["DOCUMENT_ROOT"]."/writer/nav.php");
 
     if(isset($_POST["change"]))
     {

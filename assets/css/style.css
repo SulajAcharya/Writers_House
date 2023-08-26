@@ -288,3 +288,9 @@
 #message #profile_pic {
     border-radius: 50%;
 }
+
+#profile .profile-photo {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}

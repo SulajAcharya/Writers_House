@@ -15,12 +15,12 @@
     <div class="collapse navbar-collapse" id="nav-content">
       <ul class="navbar-nav">
         <li class="nav-item col-md-12 d-flex justify-content-end">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="/user/profile_update">
             <span class="fw-bold">Update Profile</span>
           </a>
         </li>
         <li class="nav-item col-md-12 d-flex justify-content-end">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="/user/change_password">
             <span class="fw-bold">Change Password</span>
           </a>
         </li>

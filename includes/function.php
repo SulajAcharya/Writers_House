@@ -68,7 +68,7 @@
 		if (!isset($_SESSION["error_messages"])) {
 			$password = encrypt_pwd($password);
 			$unique_id = rand(time(), 1000);
-			$image = isset($_FILES['image']) ? upload_file($_FILES['image'], "D:/Ajay Programmers/Xampp/htdocs/Writers_House/img/", ["jpg", "jpeg", "png"]) : "";
+			$image = isset($_FILES['image']) ? upload_file($_FILES['image'], "D:/Ajay Programmers/Xampp/htdocs/Writers_House/img//profile_img/", ["jpg", "jpeg", "png"]) : "";
 
 			$sql = "INSERT INTO user(fname, lname, user_name, email_address, password, unique_id, img) VALUES (:fname, :lname, :user_name, :email_address, :password, :unique_id, :image)";
 			$stmt = $db->prepare($sql);
@@ -717,6 +717,43 @@
 				return $stmt->fetchAll(PDO::FETCH_ASSOC);
 			}
 		}
+		return false;
+	}
+
+	function profile_update($data)
+	{
+		global $db;
+		extract($data);
+		$email_address = htmlspecialchars(trim($email_address));
+
+		if (filter_var($email_address, FILTER_VALIDATE_EMAIL) === false) {
+			$_SESSION["error_messages"][] = "Invalid Email Address";
+		}
+
+		if (emailaddress_checking($email_address) === true) {
+			$_SESSION["error_messages"][] = "This email address is already registered";
+		}
+
+		if (!isset($_SESSION["error_messages"])) {
+			$image = isset($_FILES['image']) ? upload_file($_FILES['image'], "D:/Ajay Programmers/Xampp/htdocs/Writers_House/img//profile_img/", ["jpg", "jpeg", "png"]) : "";
+
+			$sql = "UPDATE USER SET fname = :fname, lname = :lname, user_name = :user_name, email_address = :email_address, img = :image, description = :description";
+			$stmt = $db->prepare($sql);
+			$stmt->bindParam(':fname', $fname, PDO::PARAM_STR);
+			$stmt->bindParam(':lname', $lname, PDO::PARAM_STR);
+			$stmt->bindParam(':user_name', $user_name, PDO::PARAM_STR);
+			$stmt->bindParam(':email_address', $email_address, PDO::PARAM_STR);
+			$stmt->bindParam(':image', $image, PDO::PARAM_STR);
+			$stmt->bindParam(':description', $description, PDO::PARAM_STR);
+
+			if ($stmt->execute()) {
+				$_SESSION["success_messages"][] = "Profile Updated";
+				return true;
+			}
+
+			return false;
+		}
+
 		return false;
 	}
 ?>

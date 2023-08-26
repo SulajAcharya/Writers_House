@@ -20,12 +20,12 @@
           </a>
         </li>
         <li class="nav-item col-md-12">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="/writer/profile_update">
             <span class="fw-bold">Update Profile</span>
           </a>
         </li>
         <li class="nav-item col-md-12">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="/writer/change_password">
             <span class="fw-bold">Change Password</span>
           </a>
         </li>
