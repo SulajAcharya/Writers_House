@@ -33,7 +33,7 @@
                         <button type="submit" class="btn btn-primary fw-bold" id="signin" name="signin">Login</button>
                     </div>
                     <div class="text-center">
-                        <p>Don't have an account? <a href="" class="text-decoration-none">Sign Up</a></p>
+                        <p>Don't have an account? <a href="/registration/" class="text-decoration-none">Sign Up</a></p>
                     </div>
 				</form>
             </div>

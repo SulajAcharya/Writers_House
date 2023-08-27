@@ -735,9 +735,9 @@
 		}
 
 		if (!isset($_SESSION["error_messages"])) {
-			$image = isset($_FILES['image']) ? upload_file($_FILES['image'], "D:/Ajay Programmers/Xampp/htdocs/Writers_House/img//profile_img/", ["jpg", "jpeg", "png"]) : "";
-
-			$sql = "UPDATE USER SET fname = :fname, lname = :lname, user_name = :user_name, email_address = :email_address, img = :image, description = :description";
+			$user_id = $_SESSION["user_id"];
+			$image = isset($_FILES['image']) ? upload_file($_FILES['image'], "D:/Ajay Programmers/Xampp/htdocs/Writers_House/img/profile_img/", ["jpg", "jpeg", "png"]) : "";
+			$sql = "UPDATE USER SET fname = :fname, lname = :lname, user_name = :user_name, email_address = :email_address, img = :image, description = :description WHERE user_id = :user_id";
 			$stmt = $db->prepare($sql);
 			$stmt->bindParam(':fname', $fname, PDO::PARAM_STR);
 			$stmt->bindParam(':lname', $lname, PDO::PARAM_STR);
@@ -745,6 +745,7 @@
 			$stmt->bindParam(':email_address', $email_address, PDO::PARAM_STR);
 			$stmt->bindParam(':image', $image, PDO::PARAM_STR);
 			$stmt->bindParam(':description', $description, PDO::PARAM_STR);
+			$stmt->bindParam(':user_id',$user_id, PDO::PARAM_INT);
 
 			if ($stmt->execute()) {
 				$_SESSION["success_messages"][] = "Profile Updated";
@@ -752,6 +753,30 @@
 			}
 
 			return false;
+		}
+
+		return false;
+	}
+
+	function add_content($data)
+	{
+		global $db;
+		extract($data);
+
+		$user_id = $_SESSION["user_id"];
+		$cover_img = isset($_FILES['image']) ? upload_file($_FILES['image'], "D:/Ajay Programmers/Xampp/htdocs/Writers_House/img/content_img/", ["jpg", "jpeg", "png"]) : "";
+		$sql = "INSERT INTO content(user_id,title,one_liner,genre_id,writers_content,cover_img) VALUES (:user_id,:title,:one_liner,:genre_id,:writers_content,:cover_img)";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':user_id',$user_id,PDO::PARAM_INT);
+		$stmt->bindParam(':title',$title,PDO::PARAM_STR);
+		$stmt->bindParam(':one_liner',$one_liner,PDO::PARAM_STR);
+		$stmt->bindParam(':genre_id',$genre_id,PDO::PARAM_STR);
+		$stmt->bindParam(':writers_content',$writers_content,PDO::PARAM_STR);
+		$stmt->bindParam(':cover_img',$cover_img,PDO::PARAM_STR);
+
+		if ($stmt->execute()) {
+			$_SESSION["success_messages"][] = "Content added";
+			return true;
 		}
 
 		return false;

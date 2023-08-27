@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" id="nav-content">
       <ul class="navbar-nav">
         <li class="nav-item col-md-12">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="/writer/add_content">
             <span class="fw-bold">Add Content</span>
           </a>
         </li>
