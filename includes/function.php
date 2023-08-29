@@ -730,10 +730,6 @@
 			$_SESSION["error_messages"][] = "Invalid Email Address";
 		}
 
-		if (emailaddress_checking($email_address) === true) {
-			$_SESSION["error_messages"][] = "This email address is already registered";
-		}
-
 		if (!isset($_SESSION["error_messages"])) {
 			$user_id = $_SESSION["user_id"];
 			$image = isset($_FILES['image']) ? upload_file($_FILES['image'], "D:/Ajay Programmers/Xampp/htdocs/Writers_House/img/profile_img/", ["jpg", "jpeg", "png"]) : "";

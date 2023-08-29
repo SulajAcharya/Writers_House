@@ -14,8 +14,8 @@
 	<link rel="stylesheet" href="/assets/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/assets/css/style.css">
   <script type="text/javascript" src="/assets/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script type="text/javascript" src="/assets/js/writer_radio.js"></script>
-  <script type="text/javascript" src="/assets/js/add_image.js"></script>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow navbar-custom">

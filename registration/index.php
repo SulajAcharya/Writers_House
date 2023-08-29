@@ -18,6 +18,11 @@
           <form role="form" action="<?php echo action_form(); ?>" class="form-group" method="post" enctype="multipart/form-data">
             <h2 class="d-flex justify-content-start mb-4" style="color:blue">Sign Up</h2>
             <div class="row mb-3">
+                <div class="d-flex justify-content-center">
+                    <img src="/img/default_profile.png" id="profile-photo" name="profile-photo" class="img-fluid profile-photo">
+                </div>
+            </div>
+            <div class="row mb-3">
               <div class="col-md-6">
                 <label class="form-label fw-bold text-uppercase" for="fname">First Name</label>
                 <input type="text" class="form-control" placeholder="Enter First Name" id="fname" name="fname" required>
@@ -62,6 +67,27 @@
     </div>
   </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+            const imageInput = document.getElementById('image');
+            const displayImage = document.getElementById('profile-photo');
+            const imageDataInput = document.getElementById('image');
+
+            imageInput.addEventListener('change', function (e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (event) {
+                        displayImage.src = event.target.result;
+                        displayImage.style.display = 'block';
+                        imageDataInput.value = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+</script>
 
 <?php
     require_once($_SERVER["DOCUMENT_ROOT"]."/includes/footer.php");
