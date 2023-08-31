@@ -16,14 +16,15 @@
   <script type="text/javascript" src="/assets/js/bootstrap.bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script type="text/javascript" src="/assets/js/writer_radio.js"></script>
+  <script type="text/javascript" src="/assets/js/fetch_message.js"></script>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow navbar-custom">
     <div class="container">
       <a class="navbar-brand writershouse-title fw-bold text-primary" href="#">WritersHouse</a>
-      <form class="col-md-5 offset-md-1">
+      <form class="col-md-4 offset-md-1">
         <div class="input-group">
-          <input class="form-control border-end-0 border-secondary tedt-dark" type="search" placeholder="Search" id="example-search-input">
+          <input class="form-control border-end-0 border-secondary text-dark" type="search" placeholder="Search" id="example-search-input">
           <span class="input-group-append">
             <button class="btn bg-white border-start-0 border-secondary rounded-end" type="button">
               <i class="fa fa-search"></i>
@@ -47,6 +48,9 @@
               <a class="nav-link" href="/login/"><span>Account</span></a>
             </li>
             <li class="nav-item me-4">
+              <a class="nav-link" href="/feedback/"><span>Feedback</span></a>
+            </li>
+            <li class="nav-item me-4">
               <a class="nav-link" href="/logout"><span>Logout</span></a>
             </li>
           </ul>
@@ -60,6 +64,9 @@
             </li>
             <li class="nav-item me-4">
               <a class="nav-link" href="/registration/"><span>Register</span></a>
+            </li>
+            <li class="nav-item me-4">
+              <a class="nav-link" href="/feedback/"><span>Feedback</span></a>
             </li>
           </ul>
         <?php endif; ?>

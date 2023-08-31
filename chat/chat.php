@@ -22,9 +22,10 @@
                 $sender_id = $_SESSION["user_id"];
                 $sender = get_user_details_by_passing_id($sender_id); 
                 $outgoing_id = $sender['unique_id'];
+                $incoming_id = $receiver['unique_id'];
             ?>
             <?php
-                $chats = get_chat($id, $outgoing_id);
+                $chats = get_chat($incoming_id, $outgoing_id);
             ?> 
             <div class="card">
                 <div class="card-header chat-header d-flex justify-content-start align-items-center shadow pb-3 bg-body">
@@ -35,7 +36,7 @@
                 <div class="chat-box card-body">
                     <?php if($chats): ?>
                         <?php foreach($chats as $chat): ?>
-                            <?php if($chat['outgoing_id'] == $outgoing_id): ?>
+                            <?php if($chat['outgoing_id'] == $outgoing_id AND $chat['incoming_id'] = $incoming_id): ?>
                                 <div class="mb-1" id="outgoing_msg">
                                     <div class="detail">
                                         <div class="row">
@@ -45,7 +46,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            <?php else: ?>
+                            <?php elseif($chat['outgoing_id'] == $incoming_id AND $chat['incoming_id'] = $outgoing_id): ?>
                                 <div class="mb-1" id="incoming_msg">
                                     <div class="detail">
                                         <div class="row">
@@ -61,8 +62,8 @@
                 </div>
                 <form role="form" action="<?php echo action_form()."?q=".$receiver["user_id"]; ?>" method="post" enctype="multipart/form-data" class="chat_input input-group">
                     <input type="text" name="outgoing_id" id="outgoing_id" value="<?php echo $sender['unique_id']; ?>" hidden>
-                    <input type="text" name="incoming_id" id="incoming_id" value="<?php echo $receiver['user_id']; ?>" hidden>
-                    <input type="text" class="form-control" placeholder="Type here" id="msg" name="msg" aria-describedby="chat-icon">
+                    <input type="text" name="incoming_id" id="incoming_id" value="<?php echo $receiver['unique_id']; ?>" hidden>
+                    <input type="text" class="form-control" placeholder="Type here" id="msg" name="msg" class="input-field" aria-describedby="chat-icon">
                     <button class="btn btn-primary" type="submit" id="chat-icon" name="chat-icon" data-mdb-ripple-color="dark">
                         <i class="fab fa-telegram-plane"></i>
                     </button>

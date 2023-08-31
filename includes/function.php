@@ -703,14 +703,14 @@
 		return false;
 	}
 
-	function get_chat($id, $outgoing_id)
+	function get_chat($incoming_id, $outgoing_id)
 	{
 		global $db;
 
-		$sql = "SELECT * FROM chat WHERE incoming_id = :id AND outgoing_id = :outgoing_id 
-				OR incoming_id = :outgoing_id AND outgoing_id = :id ORDER BY id";
+		$sql = "SELECT * FROM chat WHERE incoming_id = :incoming_id AND outgoing_id = :outgoing_id 
+				OR incoming_id = :outgoing_id AND outgoing_id = :incoming_id ORDER BY id";
 		$stmt = $db->prepare($sql);
-		$stmt->bindParam(':id', $id, PDO::PARAM_STR);
+		$stmt->bindParam(':incoming_id', $incoming_id, PDO::PARAM_STR);
 		$stmt->bindParam(':outgoing_id', $outgoing_id, PDO::PARAM_STR);
 		if ($stmt->execute()) {
 			if ($stmt->rowCount()) {
@@ -775,6 +775,18 @@
 			return true;
 		}
 
+		return false;
+	}
+
+	function update_to_writer($id)
+	{
+		global $db;
+		$sql = "UPDATE user SET role = 'writer', modified_time = NOW() WHERE user_id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id',$id,PDO::PARAM_INT);
+		if ($stmt->execute()) {
+			return true;
+		}
 		return false;
 	}
 ?>

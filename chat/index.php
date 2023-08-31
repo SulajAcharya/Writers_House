@@ -19,22 +19,25 @@
                 <div class="card-body">
                     <?php
                         $users = chat_list();
+                        $user_id = $_SESSION["user_id"];
                     ?>
                     <?php if($users): ?>
                         <?php foreach($users as $user): ?>
-                            <div class="profile mb-5">
-                                <a href="/chat/chat?q=<?php echo $user["user_id"]; ?>" class="text-decoration-none text-dark">
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <img src="<?php echo $user["img"]; ?>" alt="profile pic" id="profile_pic">
+                            <?php if ($user["user_id"] != $user_id): ?>
+                                <div class="profile mb-5">
+                                    <a href="/chat/chat?q=<?php echo $user["user_id"]; ?>" class="text-decoration-none text-dark">
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <img src="<?php echo $user["img"]; ?>" alt="profile pic" id="profile_pic">
+                                            </div>
+                                            <div class="col-9">
+                                                <div class="card-title h5"><?php echo $user["user_name"]; ?></div>
+                                                <div class="card-text">You:Hi</div>
+                                            </div>
                                         </div>
-                                        <div class="col-9">
-                                            <div class="card-title h5"><?php echo $user["user_name"]; ?></div>
-                                            <div class="card-text">You:Hi</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
