@@ -5,7 +5,7 @@
     if(isset($_GET["q"]) && !empty($_GET["q"]) && is_numeric($_GET["q"]))
     {
         $id = trim($_GET["q"]);
-        $writer = user_by_id($id);
+        $writer = get_user_details_by_passing_id($id);
     }
     
     if($writer["block"] === "0")

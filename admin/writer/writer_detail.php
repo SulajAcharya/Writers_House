@@ -5,7 +5,7 @@
     if(isset($_GET["q"]) && !empty($_GET["q"]) && is_numeric($_GET["q"]))
     {
         $id = trim($_GET["q"]);
-        $user = user_by_id($id);
+        $user = get_user_details_by_passing_id($id);
     }
 ?>
 
@@ -68,26 +68,19 @@
                         <?php if($contents): ?>
                             <div class="row mb-5">
                                 <?php foreach($contents as $content): ?>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <div class="card">
                                             <div class="card-body">
                                                 <img class="card-img-top" src="<?php echo $content["cover_img"] ?>" alt="content">
                                                 <div class="card-title h5 my-2">
                                                     <div class="row">
-                                                        <div class=" col-md-6 d-flex justify-content-start">
+                                                        <div class="d-flex justify-content-center">
                                                             <?php echo $content["title"]; ?>
-                                                        </div>
-                                                        <div class=" col-md-6 d-flex justify-content-end">
-                                                            <a class="btn btn-sm btn-danger">
-                                                                Remove
-                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <p class="card-text my-2">22 June 2023
-                                                    <?php
-                                                        echo strrev(substr($content["created_time"],0,10));
-                                                    ?>
+                                                <p class="card-text my-2">
+                                                    <?php echo substr($content['created_time'],8,2)."-".substr($content['created_time'],5,2)."-".substr($content['created_time'],0,4); ?>
                                                 </p>
                                                 <div class="row">
                                                     <?php
@@ -95,13 +88,13 @@
                                                         $comment = get_comment_count($id);
                                                     ?>
                                                     <div class="col-md-4">
-                                                        <span><i class="fa-regular fa-eye"></i><?php echo $content["read_count"]; ?></span>
+                                                        <span><i class="fa-regular fa-eye"></i> <?php echo $content["read_count"]; ?></span>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <span><i class="fa-regular fa-message"></i><?php echo $comment; ?></span>
+                                                        <span><i class="fa-regular fa-message"></i> <?php echo $comment; ?></span>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <span><i class="fa-regular fa-thumbs-up"><?php echo $content["like"]; ?></i>22</span>
+                                                        <span><i class="fa-regular fa-thumbs-up"></i> <?php echo $content["likes"]; ?></span>
                                                     </div>
                                                 </div>
                                             </div>

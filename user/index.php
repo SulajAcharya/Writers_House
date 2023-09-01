@@ -15,7 +15,7 @@
             <?php if($user["description"] > 0): ?>
                 <p class="mb-3">Description</p>
             <?php endif; ?>
-            <a class="btn btn-primary">Upgrade To Writer</a>
+            <a href="/user/update_to_writer?q=<?php echo $_SESSION['user_id']; ?>" class="btn btn-primary">Upgrade To Writer</a>
         </div>
     </div>
     <div class="h4 previous">Previous Visits</div>
@@ -39,18 +39,13 @@
                         <img class="card-img-top" src="<?php echo $content["cover_img"]; ?>" alt="content">
                         <div class="card-title h5 my-2">
                             <div class="row">
-                                <div class=" col-md-6 d-flex justify-content-start">
+                                <div class="d-flex justify-content-center">
                                     <?php echo $content["title"]; ?>
-                                </div>
-                                <div class=" col-md-6 d-flex justify-content-end">
-                                    <a class="btn btn-sm btn-danger">
-                                        Remove
-                                    </a>
                                 </div>
                             </div>
                         </div>
-                        <p class="card-text my-2">22 June 2023
-                        <?php echo substr($content['start_time'],8,2)."-".substr($content['start_time'],5,2)."-".substr($content['start_time'],0,4); ?>
+                        <p class="card-text my-2">
+                            <?php echo substr($content['created_time'],8,2)."-".substr($content['created_time'],5,2)."-".substr($content['created_time'],0,4); ?>
                         </p>
                         <div class="row">
                             <?php
@@ -58,13 +53,13 @@
                                 $comment = get_comment_count($id);
                             ?>
                             <div class="col-md-4">
-                                <span><i class="fa-regular fa-eye"></i><?php echo $content["read_count"]; ?></span>
+                                <span><i class="fa-regular fa-eye"></i> <?php echo $content["read_count"]; ?></span>
                             </div>
                             <div class="col-md-4">
-                                <span><i class="fa-regular fa-message"></i><?php echo $comment; ?></span>
+                                <span><i class="fa-regular fa-message"></i> <?php echo $comment; ?></span>
                             </div>
                             <div class="col-md-4">
-                                <span><i class="fa-regular fa-thumbs-up"><?php echo $content["like"]; ?></i>22</span>
+                                <span><i class="fa-regular fa-thumbs-up"></i> <?php echo $content["like"]; ?></span>
                             </div>
                         </div>
                     </div>

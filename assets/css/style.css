@@ -308,3 +308,7 @@
 #add_content #card1 {
     height: 230px;
 }
+
+#user_profile .message p {
+    background-color: #5dabff;
+}

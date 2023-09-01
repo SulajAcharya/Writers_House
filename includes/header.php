@@ -21,7 +21,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow navbar-custom">
     <div class="container">
-      <a class="navbar-brand writershouse-title fw-bold text-primary" href="#">WritersHouse</a>
+      <a class="navbar-brand writershouse-title fw-bold text-primary" href="/">WritersHouse</a>
       <form class="col-md-4 offset-md-1">
         <div class="input-group">
           <input class="form-control border-end-0 border-secondary text-dark" type="search" placeholder="Search" id="example-search-input">

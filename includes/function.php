@@ -317,21 +317,7 @@
 		}
 		return false;
 	}
-
-	function user_by_id($id)
-	{
-		global $db;
-		$sql = "SELECT * from user WHERE user_id = :id";
-		$stmt = $db->prepare($sql);
-		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
-
-		if($stmt->execute())
-		{
-			return $stmt->fetch(PDO::FETCH_ASSOC);
-		}
-		return false;
-	}
-
+	
 	function verify_user($verified,$id)
 	{
 		global $db;
@@ -786,6 +772,34 @@
 		$stmt->bindParam(':id',$id,PDO::PARAM_INT);
 		if ($stmt->execute()) {
 			return true;
+		}
+		return false;
+	}
+
+	function get_only_user_details_by_passing_id($id)
+	{
+		global $db;
+		$sql = "SELECT * FROM user WHERE user_id = :id AND role='user'";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+		if ($stmt->execute())
+		{
+			return $stmt->fetch(PDO::FETCH_ASSOC);
+		}
+		return false;
+	}
+
+	function get_only_writer_details_by_passing_id($id)
+	{
+		global $db;
+		$sql = "SELECT * FROM user WHERE user_id = :id AND role='writer'";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+		if ($stmt->execute())
+		{
+			return $stmt->fetch(PDO::FETCH_ASSOC);
 		}
 		return false;
 	}
