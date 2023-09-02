@@ -4,8 +4,8 @@
 
     if(isset($_GET["q"]) && !empty($_GET["q"]) && is_numeric($_GET["q"]))
     {
-        $id = trim($_GET["q"]);
-        $writer = get_only_writer_details_by_passing_id($id);
+      $id = trim($_GET["q"]);
+      $writer = get_only_writer_details_by_passing_id($id);
     }
 ?>
 

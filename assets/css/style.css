@@ -312,3 +312,44 @@
 #user_profile .message p {
     background-color: #5dabff;
 }
+
+#content_page_list {
+    overflow-x: hidden;
+}
+#content_page_list #content_writer_option {
+    list-style-type: none;
+    display: block;
+}
+
+#content_page_list #content_writer_option li {
+    display: inline;
+    margin: 0 10px 0 0;
+}
+
+#content_page_list #content_writer_option label {
+    color: #c5c5c5;
+}
+
+#content_page_list #content_writer_option input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    display: none;
+}
+
+#content_page_list #content_writer_option input:checked + label {
+    color:black;
+}
+
+#content_page_list #content_writer_option label:hover {
+    color: #DDD;
+}
+#content_page_list #content_list #content_image {
+    width: 100px;
+}
+#content_page_list #author_list #profile_photo {
+    width: 100px; 
+    border-radius: 50%;
+}
