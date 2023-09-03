@@ -8,6 +8,11 @@
         exit(0);
     }
 
+    if(isset($_GET["q"]) && !empty($_GET["q"]))
+    {
+        $search_name = $_GET["q"];
+    }
+
     if(isset($_POST["submit"]))
     {
         $search = trim($_POST["search"]);
@@ -27,11 +32,11 @@
             <div class="card mt-4">
                 <div class="card-body">
                     <?php
-                        $users = chat_list();
+                        $search_result = chat_search($search_name);
                         $user_id = $_SESSION["user_id"];
                     ?>
-                    <?php if($users): ?>
-                        <?php foreach($users as $user): ?>
+                    <?php if($search_result): ?>
+                        <?php foreach($search_result as $user): ?>
                             <?php if ($user["user_id"] != $user_id): ?>
                                 <div class="profile mb-5">
                                     <a href="/chat/chat?q=<?php echo $user["user_id"]; ?>" class="text-decoration-none text-dark">

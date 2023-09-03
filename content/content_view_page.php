@@ -31,7 +31,7 @@
         </a>
         <?php
             $id = $content["content_id"];
-            $comment = get_comment_count($id);
+            $comment_count = get_comment_count($id);
         ?>
         <div class="row mb-3 mt-3">
             <div class="row text-center">
@@ -39,7 +39,7 @@
                     <span><i class="fa-regular fa-eye"></i> <?php echo $content["read_count"]; ?></span>
                 </div>
                 <div class="col-md-4">
-                    <span><i class="fa-regular fa-message"></i> <?php echo $comment; ?></span>
+                    <span><i class="fa-regular fa-message"></i> <?php echo $comment_count; ?></span>
                 </div>
                 <div class="col-md-4">
                     <span><i class="fa-regular fa-thumbs-up"></i> <?php echo $content["likes"]; ?></span>
@@ -70,9 +70,27 @@
                         <div class="col-md-10">
                             <h6>Comment</h6>
                         </div>
-                        <div class="col-md text-end">
-                            <span><i class="fa-regular fa-thumbs-up fa-xl" style="color: #2091F9;"></i></span>
-                        </div>
+                        <?php
+                            $user_id = $_SESSION["user_id"];
+                        ?>
+                        <?php if(like_checking($id, $user_id) === true): ?>
+                            <?php
+                                $like = get_like_detail($id, $user_id);
+                            ?>
+                            <?php if($like["liked"] == '0'): ?>
+                                <a href="" class="col-md text-decoration-none text-end">
+                                    <span><i class="fa-regular fa-thumbs-up fa-xl" style="color: #2091F9;"></i></span>
+                                </a>
+                            <?php elseif($like["liked"] == '1'): ?>
+                                <a href="" class="col-md text-decoration-none text-end">
+                                    <span><i class="fa-solid fa-thumbs-up fa-xl" style="color: #2091F9;"></i></i></span>
+                                </a>
+                            <?php endif; ?>
+                        <?php else: ?>
+                            <a href="" class="col-md text-decoration-none text-end">
+                                <span><i class="fa-regular fa-thumbs-up fa-xl" style="color: #2091F9;"></i></span>
+                            </a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -82,39 +100,48 @@
                 <div class="col-md-10 offset-md-1">
                     <form role="form" action="<?php echo action_form(); ?>" method="post" enctype="multipart/form-data">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" aria-describedby="button-addon2">
-                            <button class="btn btn-primary" type="button" id="button-addon2">Comment</button>
+                            <input type="text" class="form-control" aria-describedby="comment-submit" id="comment" name="comment">
+                            <button class="btn btn-primary" type="submit" id="comment-submit" name="comment-submit">Comment</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        <div class="row mb-1">
-            <div class="container">
-                <div class="col-md-10 offset-md-1">
-                    <div class="container shadow rounded mb-3">
-                        <div class="row">
-                            <div class="col-md-2 mt-2">
-                                <img src="assets/img/images.png" style="border-radius: 50%;">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="columns">
-                                    <div class="row">
-                                        <div class="text">user_name</div>
+        <?php
+            $comments = get_comment($id);
+        ?>
+        <?php if($comments): ?>
+            <?php foreach($comments as $comment): ?>
+                <?php
+                    $user = get_user_details_by_passing_id($user_id); 
+                ?>
+                <div class="row mb-1">
+                    <div class="container">
+                        <div class="col-md-10 offset-md-1">
+                            <div class="container shadow rounded mb-3">
+                                <div class="row">
+                                    <div class="col-md-2 mt-2">
+                                        <a href="" class="text-decoration-none">
+                                            <img src="<?php echo $user["img"]; ?>" alt="profile image" style="border-radius: 50%;">
+                                        </a>
                                     </div>
-                                    <div class="row mb-1">
-                                        <p class="text">comment</p>
+                                    <div class="col-md-8">
+                                        <div class="columns">
+                                            <div class="row">
+                                                <div class="text"><?php echo $user["user_name"]; ?></div>
+                                            </div>
+                                            <div class="row mb-1">
+                                                <p class="text h5"><?php echo $comment["comment"]; ?></p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-2 text-end">
-                                <span><i class="fa-regular fa-thumbs-up fa-xl mt-4" style="color: #2091F9;"></i></span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </div>
 </div>
 
@@ -123,7 +150,6 @@
     const contentToSpeak = document.getElementById("content").textContent;
     const synth = window.speechSynthesis;
 
-    // Check if speech synthesis is supported by the browser
     if ('speechSynthesis' in window) {
       const utterance = new SpeechSynthesisUtterance(contentToSpeak);
       synth.speak(utterance);

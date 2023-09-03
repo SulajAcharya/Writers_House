@@ -1,26 +1,7 @@
 <?php
     require_once($_SERVER["DOCUMENT_ROOT"]."/includes/init.php");
 ?>
-<!--
-<div id="main" class="vh-100" style="background-color: #f9f9f9;">
-  <div class="content text-left">
-    <div class="row">
-      <div class="col-md-4">
-        <p style="color: #2091F9; font-weight: bold; font-size: 56px;">Hi, we're<br> WritersHouse</p>
-          <h3>The world's most-loved social storytelling platform</h3>
-          <br>
-          <div class="buttons">
-            <input class="btn btn-primary" type="submit" value="Explore">
-          </div>
-        </div>
-      </div>
-      <div class="col-md-8">
-          
-      </div>
-    </div>
-  </div>
-</div>
--->
+
 <div id="main" class="col-md-12">
   <div class="container">
     <div class="row">

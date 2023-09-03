@@ -803,4 +803,151 @@
 		}
 		return false;
 	}
+
+	function get_last_message_from_chat($incoming_id, $outgoing_id)
+	{
+		global $db;
+		$sql = "SELECT * FROM chat WHERE incoming_id = :incoming_id AND outgoing_id = :outgoing_id 
+				OR incoming_id = :outgoing_id AND outgoing_id = :incoming_id ORDER BY id DESC LIMIT 1";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':incoming_id', $incoming_id, PDO::PARAM_STR);
+		$stmt->bindParam(':outgoing_id', $outgoing_id, PDO::PARAM_STR);
+		if ($stmt->execute()) {
+			if ($stmt->rowCount()) {
+				return $stmt->fetch(PDO::FETCH_ASSOC);
+			}
+		}
+		return false;				
+	}
+
+	function chat_search($search)
+	{
+		global $db;
+		$search = "%" . $search . "%";
+		$sql = "SELECT * FROM user WHERE fname LIKE :search OR lname LIKE :search OR user_name LIKE :search";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':search', $search, PDO::PARAM_STR);
+		if ($stmt->execute()) {
+			if ($stmt->rowCount()) {
+				return $stmt->fetchAll(PDO::FETCH_ASSOC);
+			}
+		}
+		return false;
+	}
+
+	function content_search($search)
+	{
+		global $db;
+		$search = "%" . $search . "%";
+		$sql = "SELECT * FROM content WHERE title LIKE :search OR genre_id = :search";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':search', $search, PDO::PARAM_STR);
+		if ($stmt->execute()) {
+			if ($stmt->rowCount()) {
+				return $stmt->fetchAll(PDO::FETCH_ASSOC);
+			}
+		}
+		return false;
+	}
+
+	function user_search($search)
+	{
+		global $db;
+		$search = "%" . $search . "%";
+		$sql = "SELECT * FROM user WHERE fname LIKE :search OR lname LIKE :search OR user_name LIKE :search";
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam(':search', $search, PDO::PARAM_STR);
+		if ($stmt->execute()) {
+			if ($stmt->rowCount()) {
+				return $stmt->fetchAll(PDO::FETCH_ASSOC);
+			}
+		}
+		return false;
+	}
+
+	function like_checking($content_id, $user_id)
+	{
+		global $db;
+		$sql="SELECT COUNT(1) as 'count' FROM likes WHERE content_id = :content_id AND user_id = :user_id" ;
+		$stmt=$db->prepare($sql);
+		$stmt->bindParam(':content_id',$content_id,PDO::PARAM_INT);
+		$stmt->bindParam(':user_id',$user_id,PDO::PARAM_INT);
+		if($stmt->execute())
+		{
+			return $stmt->fetch(PDO::FETCH_ASSOC)["count"] > 0? true : false ;
+		}
+		return false;
+	}
+
+	function get_like_detail($content_id, $user_id)
+	{
+		global $db;
+		$sql="SELECT * FROM likes WHERE content_id = :content_id AND user_id = :user_id" ;
+		$stmt=$db->prepare($sql);
+		$stmt->bindParam(':content_id',$content_id,PDO::PARAM_INT);
+		$stmt->bindParam(':user_id',$user_id,PDO::PARAM_INT);
+		if($stmt->execute())
+		{
+			return $stmt->fetch(PDO::FETCH_ASSOC);
+		}
+		return false;
+	}
+
+	function insert_like($content_id, $user_id)
+	{
+		global $db;
+		$sql="INSERT INTO likes (content_id, user_id) VALUES (:content_id, :user_id)" ;
+		$stmt=$db->prepare($sql);
+		$stmt->bindParam(':content_id',$content_id,PDO::PARAM_INT);
+		$stmt->bindParam(':user_id',$user_id,PDO::PARAM_INT);
+		if($stmt->execute())
+		{
+			return true;
+		}
+		return false;
+	}
+
+	function update_like($content_id, $user_id, $like)
+	{
+		global $db;
+		$sql="UPDATE likes SET like = :like WHERE content_id = :content_id AND user_id = :user_id";
+		$stmt=$db->prepare($sql);
+		$stmt->bindParam(':like',$like,PDO::PARAM_STR);
+		$stmt->bindParam(':content_id',$content_id,PDO::PARAM_INT);
+		$stmt->bindParam(':user_id',$user_id,PDO::PARAM_INT);
+		if($stmt->execute())
+		{
+			return true;
+		}
+		return false;
+	}
+
+	function get_comment($content_id)
+	{
+		global $db;
+		$sql="SELECT * FROM comments WHERE content_id = :content_id";
+		$stmt=$db->prepare($sql);
+		$stmt->bindParam(':content_id',$content_id,PDO::PARAM_INT);
+		if($stmt->execute())
+		{
+			return $stmt->fetchAll(PDO::FETCH_ASSOC);
+		}
+		return false;
+	}
+
+	function insert_comment($content_id, $user_id, $data)
+	{
+		global $db;
+		extract($data);
+		$sql="INSERT INTO comments(comment, user_id, content_id) VALUES (:comment, :user_id, :content_id)";
+		$stmt=$db->prepare($sql);
+		$stmt->bindParam(':comment',$comment,PDO::PARAM_STR);
+		$stmt->bindParam(':user_id',$user_id,PDO::PARAM_INT);
+		$stmt->bindParam(':content_id',$content_id,PDO::PARAM_INT);
+		if($stmt->execute())
+		{
+			return true;
+		}
+		return false;
+	}
 ?>

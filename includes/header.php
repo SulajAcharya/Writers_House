@@ -10,6 +10,20 @@
 	<?php else: ?>
 		<title>WritersHouse</title>
 	<?php endif; ?>
+  <?php
+    if(isset($_POST["submit_click"]))
+    {
+      $search = trim($_POST["search-input"]);
+      if($search != "")
+      {
+        echo "<script>window.location='/content/content_search_list?q=$search';</script>";
+      }
+      else
+      {
+        echo "<script>window.location='/content/content_list';</script>";
+      }
+    } 
+  ?>
 	<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/assets/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/assets/css/style.css">
@@ -23,11 +37,11 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow navbar-custom">
     <div class="container">
       <a class="navbar-brand writershouse-title fw-bold text-primary" href="/">WritersHouse</a>
-      <form class="col-md-4 offset-md-1">
+      <form role="form" action="<?php echo action_form(); ?>" method="post" enctype="multipart/form-data" class="col-md-4 offset-md-1">
         <div class="input-group">
-          <input class="form-control border-end-0 border-secondary text-dark" type="search" placeholder="Search" id="example-search-input">
+          <input class="form-control border-end-0 border-secondary text-dark" type="search" placeholder="Search" id="search-input" name="search-input">
           <span class="input-group-append">
-            <button class="btn bg-white border-start-0 border-secondary rounded-end" type="button">
+            <button class="btn bg-white border-start-0 border-secondary rounded-end" type="submit" id="submit_click" name="submit_click">
               <i class="fa fa-search"></i>
             </button>
           </span>
