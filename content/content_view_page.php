@@ -7,6 +7,19 @@
       $id = trim($_GET["q"]);
       $content = get_content_by_passing_id($id);
     }
+
+    if(!isset($_SESSION["user_id"]) || empty($_SESSION["user_id"]) || !is_numeric($_SESSION["user_id"]))
+    {
+		header("Location: /login/");
+		exit(0);
+	}
+
+    if(isset($_POST["comment-submit"]))
+    {
+        insert_comment($_POST);
+        $content_id = trim($_POST["content_id"]);
+        current_page("q=$content_id");
+    }
 ?>
 
 <div class="container col-md-6 offset-md-3 shadow rounded mt-3 mb-3 border">
@@ -78,16 +91,16 @@
                                 $like = get_like_detail($id, $user_id);
                             ?>
                             <?php if($like["liked"] == '0'): ?>
-                                <a href="" class="col-md text-decoration-none text-end">
+                                <a href="/content/update_like?q=<?php echo $id; ?>" class="col-md text-decoration-none text-end" id="add_like">
                                     <span><i class="fa-regular fa-thumbs-up fa-xl" style="color: #2091F9;"></i></span>
                                 </a>
                             <?php elseif($like["liked"] == '1'): ?>
-                                <a href="" class="col-md text-decoration-none text-end">
+                                <a href="/content/update_like?q=<?php echo $id; ?>" class="col-md text-decoration-none text-end" id="remove_like">
                                     <span><i class="fa-solid fa-thumbs-up fa-xl" style="color: #2091F9;"></i></i></span>
                                 </a>
                             <?php endif; ?>
                         <?php else: ?>
-                            <a href="" class="col-md text-decoration-none text-end">
+                            <a href="/content/insert_like?q=<?php echo $id; ?>" class="col-md text-decoration-none text-end">
                                 <span><i class="fa-regular fa-thumbs-up fa-xl" style="color: #2091F9;"></i></span>
                             </a>
                         <?php endif; ?>
@@ -101,6 +114,8 @@
                     <form role="form" action="<?php echo action_form(); ?>" method="post" enctype="multipart/form-data">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" aria-describedby="comment-submit" id="comment" name="comment">
+                            <input type="text" class="form-control" aria-describedby="comment-submit" value="<?php echo $id; ?>" id="content_id" name="content_id" hidden>
+                            <input type="text" class="form-control" aria-describedby="comment-submit" value="<?php echo $user_id; ?>" id="user_id" name="user_id" hidden>
                             <button class="btn btn-primary" type="submit" id="comment-submit" name="comment-submit">Comment</button>
                         </div>
                     </form>

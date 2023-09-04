@@ -838,8 +838,7 @@
 	function content_search($search)
 	{
 		global $db;
-		$search = "%" . $search . "%";
-		$sql = "SELECT * FROM content WHERE title LIKE :search OR genre_id = :search";
+		$sql = "SELECT * FROM content WHERE title LIKE CONCAT('%', :search, '%') OR genre_id = :search";
 		$stmt = $db->prepare($sql);
 		$stmt->bindParam(':search', $search, PDO::PARAM_STR);
 		if ($stmt->execute()) {
@@ -910,11 +909,37 @@
 	function update_like($content_id, $user_id, $like)
 	{
 		global $db;
-		$sql="UPDATE likes SET like = :like WHERE content_id = :content_id AND user_id = :user_id";
+		$sql="UPDATE likes SET liked = :like WHERE content_id = :content_id AND user_id = :user_id";
 		$stmt=$db->prepare($sql);
 		$stmt->bindParam(':like',$like,PDO::PARAM_STR);
 		$stmt->bindParam(':content_id',$content_id,PDO::PARAM_INT);
 		$stmt->bindParam(':user_id',$user_id,PDO::PARAM_INT);
+		if($stmt->execute())
+		{
+			return true;
+		}
+		return false;
+	}
+
+	function increase_like_count($content_id)
+	{
+		global $db;
+		$sql = "UPDATE content SET likes = likes + 1 WHERE content_id = :content_id";
+		$stmt=$db->prepare($sql);
+		$stmt->bindParam(':content_id',$content_id,PDO::PARAM_INT);
+		if($stmt->execute())
+		{
+			return true;
+		}
+		return false;
+	}
+
+	function decrease_like_count($content_id)
+	{
+		global $db;
+		$sql = "UPDATE content SET likes = likes - 1 WHERE content_id = :content_id";
+		$stmt=$db->prepare($sql);
+		$stmt->bindParam(':content_id',$content_id,PDO::PARAM_INT);
 		if($stmt->execute())
 		{
 			return true;
@@ -935,7 +960,7 @@
 		return false;
 	}
 
-	function insert_comment($content_id, $user_id, $data)
+	function insert_comment($data)
 	{
 		global $db;
 		extract($data);
