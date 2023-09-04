@@ -39,51 +39,66 @@
     <div class="row" id="published_content">
       <?php if($contents): ?>
         <?php foreach($contents as $content): ?>
-          <div class="card mb-3 col-md-3">
-            <div class="card-body">
-              <img class="card-img-top" src="<?php echo $content["cover_img"]; ?>" alt="content">
-              <h5 class="card-title my-2"><?php echo $content["title"]; ?></h5>
-              <p class="card-text my-2">
-                <?php echo substr($content['created_time'],8,2)."-".substr($content['created_time'],5,2)."-".substr($content['created_time'],0,4); ?>
-              </p>
-              <div class="row">
-                <?php
-                  $id = $content["content_id"];
-                  $c_comment = get_comment_count($id);
-                ?>
-                <div class="col-md-4">
-                  <span><i class="fa-regular fa-eye"></i> <?php echo $content["read_count"]; ?></span>
+          <a href="/content/content_view_page?q=<?php echo $content["content_id"]; ?>" class="text-decoration-none text-dark">
+            <div class="card col-md-3">
+              <div class="card-body">
+                <img class="card-img-top" src="<?php echo $content["cover_img"]; ?>" alt="content">
+                <h5 class="card-title my-2"><?php echo $content["title"]; ?></h5>
+                <div class="row mb-3">
+                    <div class="d-flex justify-content-between gap-2">
+                      <?php echo substr($content['created_time'],8,2)."-".substr($content['created_time'],5,2)."-".substr($content['created_time'],0,4); ?>
+                      <a href="/writer/edit_content?q=<?php echo $content["content_id"]; ?>" class="btn btn-primary">
+                        <span><i class="fas fa-edit"></i></span>
+                      </a>
+                      <a href="/writer/delete_content?q=<?php echo $content["content_id"]; ?>" class="btn btn-danger" id="delete_button" name="delete_button">
+                        <span><i class="fa-solid fa-trash"></i></span>
+                      </a>        
+                    </div>
                 </div>
-                <div class="col-md-4">
-                  <span><i class="fa-regular fa-message"></i> <?php echo $c_comment; ?></span>
-                </div>
-                <div class="col-md-4">
-                  <span><i class="fa-regular fa-thumbs-up"></i> <?php echo $content["likes"]; ?></span>
+                <div class="row">
+                  <?php
+                    $id = $content["content_id"];
+                    $c_comment = get_comment_count($id);
+                  ?>
+                  <div class="col-md-4">
+                    <span><i class="fa-regular fa-eye"></i> <?php echo $content["read_count"]; ?></span>
+                  </div>
+                  <div class="col-md-4">
+                    <span><i class="fa-regular fa-message"></i> <?php echo $c_comment; ?></span>
+                  </div>
+                  <div class="col-md-4">
+                    <span><i class="fa-regular fa-thumbs-up"></i> <?php echo $content["likes"]; ?></span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </a>
         <?php endforeach; ?>
       <?php endif; ?>
     </div>
     <div class="row" id="previous_visit_content">
       <?php if($visits): ?>
         <?php foreach($visits as $visit): ?>
-          <div class="col-md-3">
-            <?php
-              $id = $visit["content_id"];
-              $previous = get_content_by_passing_id($id);
-            ?>
-            <div class="card">
+          <?php
+            $id = $visit["content_id"];
+            $previous = get_content_by_passing_id($id);
+          ?>
+          <a href="/content/content_view_page?q=<?php echo $previous["content_id"]; ?>" class="text-decoration-none text-dark">
+            <div class="card col-md-3">
               <div class="card-body">
                 <img class="card-img-top" src="<?php echo $previous["cover_img"]; ?>" alt="content">
                 <h5 class="card-title my-2"><?php echo $previous["title"]; ?></h5>
-                <p class="card-text my-2">
-                  <?php echo substr($previous['created_time'],8,2)."-".substr($previous['created_time'],5,2)."-".substr($previous['created_time'],0,4); ?>
-                </p>
+                <div class="row mb-3">
+                    <div class="d-flex justify-content-between gap-2">
+                      <?php echo substr($previous['created_time'],8,2)."-".substr($previous['created_time'],5,2)."-".substr($previous['created_time'],0,4); ?>
+                      <a href="/writer/delete_previous?q=<?php echo $visit["id"]; ?>" class="btn btn-danger" id="delete_button" name="delete_button">
+                        <span><i class="fa-solid fa-trash"></i></span>
+                      </a>        
+                    </div>
+                </div>
                 <div class="row">
                   <?php
-                    $id = $content["content_id"];
+                    $id = $previous["content_id"];
                     $p_comment = get_comment_count($id);
                   ?>
                   <div class="col-md-4">
@@ -98,7 +113,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </a>
         <?php endforeach; ?>
       <?php endif; ?>
     </div>

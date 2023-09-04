@@ -6,6 +6,7 @@
     {
       $id = trim($_GET["q"]);
       $content = get_content_by_passing_id($id);
+      read_count($id);
     }
 
     if(!isset($_SESSION["user_id"]) || empty($_SESSION["user_id"]) || !is_numeric($_SESSION["user_id"]))
@@ -65,9 +66,52 @@
                     <button class="btn btn-primary mb-2" style="border-radius: 45%;height: 37px;" onclick="speakText()">
                         <span><i class="fas fa-volume-up"></i></span>
                     </button>
-                    <button class="btn btn-primary mb-2" style="border-radius: 45%;height: 37px;">
+                    <button class="btn btn-primary mb-2" id="music_button" name="music_button" style="border-radius: 45%;height: 37px;">
                         <span><i class="fa-solid fa-music"></i></span>
                     </button>
+                    <?php if($content["genre_id"] == 1): ?>
+                        <audio src="/assets/audio/horror.mp3" type="audio/mp3" id="audio_file" hidden></audio>
+                    <?php elseif($content["genre_id"] == 2): ?>
+                        <audio src="/assets/audio/action.mp3" type="audio/mp3" id="audio_file" hidden></audio>
+                    <?php elseif($content["genre_id"] == 3): ?>
+                        <audio src="/assets/audio/adventure.mp3" type="audio/mp3" id="audio_file" hidden></audio>
+                    <?php elseif($content["genre_id"] == 4): ?>
+                        <audio src="/assets/audio/article.mp3" type="audio/mp3" id="audio_file" hidden></audio>
+                    <?php elseif($content["genre_id"] == 5): ?>
+                        <audio src="/assets/audio/crime.mp3" type="audio/mp3" id="audio_file" hidden></audio>
+                    <?php elseif($content["genre_id"] == 6): ?>
+                        <audio src="/assets/audio/drama.mp3" type="audio/mp3" id="audio_file" hidden></audio>
+                    <?php elseif($content["genre_id"] == 7): ?>
+                        <audio src="/assets/audio/fanatasy.mp3" type="audio/mp3" id="audio_file" hidden></audio>
+                    <?php elseif($content["genre_id"] == 8): ?>
+                        <audio src="/assets/audio/fiction.mp3" type="audio/mp3" id="audio_file" hidden></audio>
+                    <?php elseif($content["genre_id"] == 9): ?>
+                        <audio src="/assets/audio/historical.mp3" type="audio/mp3" id="audio_file" hidden></audio>
+                    <?php elseif($content["genre_id"] == 10): ?>
+                        <audio src="/assets/audio/historicfiction.mp3" type="audio/mp3" id="audio_file" hidden></audio>
+                    <?php elseif($content["genre_id"] == 11): ?>
+                        <audio src="/assets/audio/humor.mp3" type="audio/mp3" id="audio_file" hidden></audio>
+                    <?php elseif($content["genre_id"] == 12): ?>
+                        <audio src="/assets/audio/investigation.mp3" type="audio/mp3" id="audio_file" hidden></audio>
+                    <?php elseif($content["genre_id"] == 13): ?>
+                        <audio src="/assets/audio/life.mp3" type="audio/mp3" id="audio_file" hidden></audio>
+                    <?php elseif($content["genre_id"] == 14): ?>
+                        <audio src="/assets/audio/love.mp3" type="audio/mp3" id="audio_file" hidden></audio>
+                    <?php elseif($content["genre_id"] == 15): ?>
+                        <audio src="/assets/audio/mystery.mp3" type="audio/mp3" id="audio_file" hidden></audio>
+                    <?php elseif($content["genre_id"] == 16): ?>
+                        <audio src="/assets/audio/nonfiction.mp3" type="audio/mp3" id="audio_file" hidden></audio>
+                    <?php elseif($content["genre_id"] == 17): ?>
+                        <audio src="/assets/audio/poetry.mp3" type="audio/mp3" id="audio_file" hidden></audio>
+                    <?php elseif($content["genre_id"] == 18): ?>
+                        <audio src="/assets/audio/shortstory.mp3" type="audio/mp3" id="audio_file" hidden></audio>
+                    <?php elseif($content["genre_id"] == 19): ?>
+                        <audio src="/assets/audio/spacefiction.mp3" type="audio/mp3" id="audio_file" hidden></audio>
+                    <?php elseif($content["genre_id"] == 20): ?>
+                        <audio src="/assets/audio/superhero.mp3" type="audio/mp3" id="audio_file" hidden></audio>
+                    <?php elseif($content["genre_id"] == 21): ?>
+                        <audio src="/assets/audio/thrilling.mp3" type="audio/mp3" id="audio_file" hidden></audio>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -85,6 +129,7 @@
                         </div>
                         <?php
                             $user_id = $_SESSION["user_id"];
+                            insert_previous($id, $user_id);
                         ?>
                         <?php if(like_checking($id, $user_id) === true): ?>
                             <?php
@@ -162,16 +207,31 @@
 
 <script>
     function speakText() {
-    const contentToSpeak = document.getElementById("content").textContent;
-    const synth = window.speechSynthesis;
-
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(contentToSpeak);
-      synth.speak(utterance);
-    } else {
-      alert("Speech synthesis is not supported by your browser.");
+        const contentToSpeak = document.getElementById("content").textContent;
+        const synth = window.speechSynthesis;
+        if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance(contentToSpeak);
+        synth.speak(utterance);
+        } else {
+        alert("Speech synthesis is not supported by your browser.");
+        }
     }
-}
+
+    function play_audio() {
+        const playButton = document.getElementById('music_button');
+        const audio = document.getElementById('audio_file');
+
+        playButton.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playButton.innerHTML = '<i class="fa-solid fa-pause"></i>';
+            } else {
+                audio.pause();
+                audio.currentTime = 0;
+                playButton.innerHTML = '<i class="fa-solid fa-music"></i>';
+            }
+        });
+    }
 </script>
 
 <?php

@@ -29,42 +29,41 @@
             <?php
                 foreach($visits as $visit):
             ?>
-            <div class="col-md-2">
-                <div class="card">
-                    <div class="card-body">
-                        <?php
-                            $id = $visit["content_id"];
-                            $content = get_content_by_passing_id($id);
-                        ?>
-                        <img class="card-img-top" src="<?php echo $content["cover_img"]; ?>" alt="content">
-                        <div class="card-title h5 my-2">
-                            <div class="row">
-                                <div class="d-flex justify-content-center">
-                                    <?php echo $content["title"]; ?>
+                <?php
+                    $id = $visit["content_id"];
+                    $content = get_content_by_passing_id($id);
+                ?>
+                <a href="/content/content_view_page?q=<?php echo $content["content_id"]; ?>" class="text-decoration-none text-dark">
+                    <div class="card col-md-3">
+                        <div class="card-body">
+                            <img class="card-img-top" src="<?php echo $content["cover_img"]; ?>" alt="content">
+                            <h5 class="card-title my-2"><?php echo $content["title"]; ?></h5>
+                            <div class="row mb-3">
+                                <div class="d-flex justify-content-between gap-2">
+                                <?php echo substr($content['created_time'],8,2)."-".substr($content['created_time'],5,2)."-".substr($content['created_time'],0,4); ?>
+                                <a href="/user/delete_previous?q=<?php echo $visit["id"]; ?>" class="btn btn-danger" id="delete_button" name="delete_button">
+                                    <span><i class="fa-solid fa-trash"></i></span>
+                                </a>        
                                 </div>
                             </div>
-                        </div>
-                        <p class="card-text my-2">
-                            <?php echo substr($content['created_time'],8,2)."-".substr($content['created_time'],5,2)."-".substr($content['created_time'],0,4); ?>
-                        </p>
-                        <div class="row">
+                            <div class="row">
                             <?php
                                 $id = $content["content_id"];
-                                $comment = get_comment_count($id);
+                                $c_comment = get_comment_count($id);
                             ?>
                             <div class="col-md-4">
                                 <span><i class="fa-regular fa-eye"></i> <?php echo $content["read_count"]; ?></span>
                             </div>
                             <div class="col-md-4">
-                                <span><i class="fa-regular fa-message"></i> <?php echo $comment; ?></span>
+                                <span><i class="fa-regular fa-message"></i> <?php echo $c_comment; ?></span>
                             </div>
                             <div class="col-md-4">
-                                <span><i class="fa-regular fa-thumbs-up"></i> <?php echo $content["like"]; ?></span>
+                                <span><i class="fa-regular fa-thumbs-up"></i> <?php echo $content["likes"]; ?></span>
+                            </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </a>
             <?php endforeach; ?>
         </div>
     <?php endif; ?>

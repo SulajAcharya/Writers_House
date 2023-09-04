@@ -36,7 +36,7 @@
     <div class="row" id="published_content">
       <?php if($contents): ?>
         <?php foreach($contents as $content): ?>
-            <a href="" class="text-decoration-none text-dark">
+          <a href="/content/content_view_page?q=<?php echo $content["content_id"]; ?>" class="text-decoration-none text-dark">
                 <div class="card mb-3 col-md-3">
                     <div class="card-body">
                         <img class="card-img-top" src="<?php echo $content["cover_img"]; ?>" alt="content">
