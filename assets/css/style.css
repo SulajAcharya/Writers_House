@@ -286,18 +286,42 @@
 }
 
 #message #profile_pic {
+    height: 60px;
+    width: 60px;
+    margin: 0 15px;
     border-radius: 50%;
 }
 
 #profile .profile-photo {
     height: 150px;
     width: 150px;
+    margin: 0 15px;
+    border-radius: 50%;
+}
+
+#content_view_page #comment_image {
+    height: 50px;
+    width: 50px;
+    margin: 0 15px;
     border-radius: 50%;
 }
 
 #sign_up .profile-photo {
     height: 150px;
     width: 150px;
+    border-radius: 50%;
+}
+#writer_detail #user {
+    height: 150px;
+    width: 150px;
+    margin: 0 15px;
+    border-radius: 50%;
+}
+
+#writer_profile #user {
+    height: 150px;
+    width: 150px;
+    margin: 0 15px;
     border-radius: 50%;
 }
 
@@ -308,6 +332,13 @@
 #add_content #card1 {
     height: 230px;
 }
+
+#user_profile #user {
+    height: 150px;
+    width: 150px;
+    margin: 0 15px;
+    border-radius: 50%;
+} 
 
 #user_profile .message p {
     background-color: #5dabff;

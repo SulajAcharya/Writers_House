@@ -36,7 +36,7 @@
                                 <div class="profile mb-5">
                                     <a href="/chat/chat?q=<?php echo $user["user_id"]; ?>" class="text-decoration-none text-dark">
                                         <div class="row">
-                                            <div class="col-3">
+                                            <div class="col-2">
                                                 <img src="<?php echo $user["img"]; ?>" alt="profile pic" id="profile_pic">
                                             </div>
                                             <?php
@@ -45,7 +45,7 @@
                                                 $outgoing_id = $receiver["unique_id"];
                                                 $last_message = get_last_message_from_chat($incoming_id, $outgoing_id);
                                             ?>
-                                            <div class="col-9">
+                                            <div class="col-10">
                                                 <div class="card-title h5"><?php echo $user["user_name"]; ?></div>
                                                 <?php if($last_message): ?>
                                                     <?php if($last_message["outgoing_id"] == $outgoing_id): ?>

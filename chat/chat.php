@@ -7,12 +7,6 @@
         $id = trim($_GET["q"]);
         $receiver = get_user_details_by_passing_id($id);
     }
-
-    if(isset($_POST["chat-icon"]))
-    {
-        insert_chat($_POST);
-        current_page("q=$id");
-    }
 ?>
 
 <div class="container" id="chat">
@@ -60,7 +54,7 @@
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
-                <form role="form" action="<?php echo action_form()."?q=".$receiver["user_id"]; ?>" method="post" enctype="multipart/form-data" class="chat_input input-group">
+                <form role="form" action="#" method="post" enctype="multipart/form-data" class="chat_input input-group">
                     <input type="text" name="outgoing_id" id="outgoing_id" value="<?php echo $sender['unique_id']; ?>" hidden>
                     <input type="text" name="incoming_id" id="incoming_id" value="<?php echo $receiver['unique_id']; ?>" hidden>
                     <input type="text" class="form-control" placeholder="Type here" id="msg" name="msg" class="input-field" aria-describedby="chat-icon">
