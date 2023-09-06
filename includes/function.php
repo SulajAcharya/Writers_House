@@ -675,9 +675,10 @@
 		}
 	}
 
-	function insert_chat($outgoing_id, $incoming_id, $msg)
+	function insert_chat($data)
 	{
 		global $db;
+		extract($data);
 		$sql = "INSERT INTO chat(incoming_id, outgoing_id, msg) VALUES (:incoming_id, :outgoing_id, :msg)";
 		$stmt = $db->prepare($sql);
 		$stmt->bindParam(':incoming_id', $incoming_id, PDO::PARAM_STR);

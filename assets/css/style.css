@@ -333,6 +333,13 @@
     height: 230px;
 }
 
+#user_dashboard .user_img {
+    height: 150px;
+    width: 150px;
+    margin: 0 15px;
+    border-radius: 50%;
+}
+
 #user_profile #user {
     height: 150px;
     width: 150px;

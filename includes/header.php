@@ -31,7 +31,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script type="text/javascript" src="/assets/js/writer_radio.js"></script>
   <script type="text/javascript" src="/assets/js/content_list_radio.js"></script>
-  <script type="text/javascript" src="/assets/js/fetch_message.js"></script>
+  <script type="text/javascript" src="/assets/js/refresh_message.js"></script>
   <script type="text/javascript" src="/assets/js/speak_text.js"></script>
 </head>
 <body>

@@ -127,25 +127,23 @@
                         <div class="col-md-10">
                             <h6>Comment</h6>
                         </div>
-                        <?php if(like_checking($id, $user_id) === true): ?>
+                        <?php
+                            $vistor_id = $_SESSION["user_id"]; 
+                        ?>
+                        <?php if(like_checking($id, $vistor_id) === true): ?>
                             <?php
-                                $like = get_like_detail($id, $user_id);
+                                $like = get_like_detail($id, $vistor_id);
                             ?>
                             <?php if($like["liked"] == '0'): ?>
                                 <a href="/content/update_like?q=<?php echo $id; ?>" class="col-md text-decoration-none text-end" id="add_like">
-                                    <input type="text" id="content_id_for_passing" name="content_id_for_passing"  value="<?php echo $id; ?>" hidden>
                                     <span><i class="fa-regular fa-thumbs-up fa-xl" style="color: #2091F9;"></i></span>
                                 </a>
                             <?php elseif($like["liked"] == '1'): ?>
-                                <a href="/content/update_like?q=<?php echo $id; ?>" class="col-md text-decoration-none text-end" id="remove_like">
-                                <input type="text" id="content_id_for_passing" name="content_id_for_passing"  value="<?php echo $id; ?>" hidden>
-                                    <span><i class="fa-solid fa-thumbs-up fa-xl" style="color: #2091F9;"></i></i></span>
+                                <a href="/content/update_like?q=<?php echo $id; ?>" class="col-md text-decoration-none text-end" id="remove_like">                                    <span><i class="fa-solid fa-thumbs-up fa-xl" style="color: #2091F9;"></i></i></span>
                                 </a>
                             <?php endif; ?>
                         <?php else: ?>
-                            <a href="/content/insert_like?q=<?php echo $id; ?>" class="col-md text-decoration-none text-end" id="insert_like">
-                            <input type="text" id="content_id_for_passing" name="content_id_for_passing"  value="<?php echo $id; ?>" hidden>
-                                <span><i class="fa-regular fa-thumbs-up fa-xl" style="color: #2091F9;"></i></span>
+                            <a href="/content/insert_like?q=<?php echo $id; ?>" class="col-md text-decoration-none text-end" id="insert_like">                                <span><i class="fa-regular fa-thumbs-up fa-xl" style="color: #2091F9;"></i></span>
                             </a>
                         <?php endif; ?>
                     </div>
