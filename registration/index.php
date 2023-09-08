@@ -56,7 +56,7 @@
               <label class="form-label fw-bold text-uppercase" for="image">Profile Image</label>
               <input type="file" class="form-control" id="image" name="image" required>
             </div>
-            <p class="acknowledgement"><input type="checkbox" id="acknowledgement" name="acknowledgement" value="acknowledgement" required> I Agree With <a href="#" class="text-decoration-none">Terms & Services</a></p>
+            <p class="acknowledgement"><input type="checkbox" id="acknowledgement" name="acknowledgement" value="acknowledgement" required> I Agree With <a href="/termsservice.html" class="text-decoration-none">Terms & Services</a></p>
             <div class="d-grid mb-3">
               <button class="btn btn-primary fw-bold" type="submit" id="registration" name="registration">Register</button>
             </div>

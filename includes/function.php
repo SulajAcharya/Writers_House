@@ -52,6 +52,7 @@
 		global $db;
 		extract($data);
 		$email_address = htmlspecialchars(trim($email_address));
+		$user_name = trim($user_name);
 
 		if (filter_var($email_address, FILTER_VALIDATE_EMAIL) === false) {
 			$_SESSION["error_messages"][] = "Invalid Email Address";
@@ -59,6 +60,10 @@
 
 		if (emailaddress_checking($email_address) === true) {
 			$_SESSION["error_messages"][] = "This email address is already registered";
+		}
+
+		if (username_checking($user_name) === true) {
+			$_SESSION["error_messages"][] = "User name already taken";
 		}
 
 		if ($password != $conf_pass) {
@@ -106,7 +111,20 @@
 			return $stmt->fetch(PDO::FETCH_ASSOC)["count"] > 0? true : false ;
 		}
 		return false;
-	}	
+	}
+	
+	function username_checking($user_name)
+	{
+		global $db;
+		$sql="SELECT COUNT(1) as 'count' FROM user WHERE user_name = :user_name" ;
+		$stmt=$db->prepare($sql);
+		$stmt->bindParam(':user_name',$user_name,PDO::PARAM_STR);
+		if($stmt->execute())
+		{
+			return $stmt->fetch(PDO::FETCH_ASSOC)["count"] > 0? true : false ;
+		}
+		return false;
+	}
 
 	function upload_file($file, $targetDirectory, $allowedExtensions) {
 		$fileName = basename($file["name"]);
