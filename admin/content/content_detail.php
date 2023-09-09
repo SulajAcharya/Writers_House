@@ -4,7 +4,7 @@
 
     if(isset($_GET["q"]) && !empty($_GET["q"]) && is_numeric($_GET["q"]))
     {
-        $id = trim($_GET["q"]);
+        $id = $_GET["q"];
         $content = get_content_by_passing_id($id);
     }
 
@@ -34,13 +34,14 @@
                             <div class="col-md-3">
                                 <img src="<?php echo $content["cover_img"]; ?>" class="img-thumbnail mx-5" alt="Cover Image">
                             </div>
+                            <div class="col-md-1"></div>
                             <div class="col-md-3">
                                 <p class="h5 mb-3"><?php echo $content["title"]; ?></p>
                                 <?php 
                                     $id = $content["user_id"];
                                     $writer = get_user_details_by_passing_id($id);
                                 ?>
-                                <p class="mb-3">~<?php echo $writer["fname"]." ".$writer["lname"]; ?><p>
+                                <p class="mb-3">~<?php echo $writer["user_name"]; ?><p>
                             </div>
                         </div>
                     </div>

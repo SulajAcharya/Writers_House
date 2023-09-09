@@ -49,7 +49,7 @@
                                             <?php echo $genre["name"]; ?>
                                         </td>
                                         <td>
-                                            <a href="/admin/content/content_detail?q=<?php echo $content["user_id"]; ?>" class="btn btn-sm btn-primary mx-auto d-block col-md-12" id="detail" name="detail"><span class="fa-solid fa-circle-info"></span> Detail</a>
+                                            <a href="/admin/content/content_detail?q=<?php echo $content["content_id"]; ?>" class="btn btn-sm btn-primary mx-auto d-block col-md-12" id="detail" name="detail"><span class="fa-solid fa-circle-info"></span> Detail</a>
                                         </td>
                                     </tr>
                                     <?php

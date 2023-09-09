@@ -15,8 +15,7 @@
         update_like($id, $user_id, $like);
         increase_like_count($id);
     }
-    
-    if($like["liked"] == 1)
+    else if($like["liked"] == 1)
     {
         $like = '0';
         update_like($id, $user_id, $like);
