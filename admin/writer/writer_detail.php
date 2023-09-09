@@ -22,6 +22,7 @@
                             <div class="col-md-3">
                                 <img src="<?php echo $user["img"]; ?>" class="img-thumbnail mx-5" alt="Profile Image">
                             </div>
+                            <div class="col-md-2"></div>
                             <div class="col-md-3">
                                 <label class="h5">User Name: </label>
                                 <p><?php echo $user["user_name"]; ?></p>

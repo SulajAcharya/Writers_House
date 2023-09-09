@@ -17,22 +17,22 @@
         </button>
         <div class="collapse navbar-collapse" id="nav-content">
             <ul class="navbar-nav">
-                <li class="nav-item mx-5 px-3">
+                <li class="nav-item mx-4 px-3">
                     <a class="nav-link" href="/admin/genre/">
                         <span class="fw-bold">Genre</span>
                     </a>
                 </li>
-                <li class="nav-item mx-5 px-3">
+                <li class="nav-item mx-4 px-3">
                     <a class="nav-link" href="/admin/user/">
                         <span class="fw-bold">User</span>
                     </a>
                 </li>
-                <li class="nav-item mx-5 px-3">
+                <li class="nav-item mx-4 px-3">
                     <a class="nav-link" href="/admin/writer">
                         <span class="fw-bold">Writer</span>
                     </a>
                 </li>
-                <li class="nav-item dropdown mx-5 px-3">
+                <li class="nav-item dropdown mx-4 px-3">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <span class="fw-bold">Content</span>
                     </a>
@@ -42,7 +42,12 @@
                         <li><a class="btn dropdown-item fw-bold" href="/admin/content/disapprove_content_list">Disapproved Content</a></li>
                         <li><a class="btn dropdown-item fw-bold" href="/admin/content/pending_content_list">Pending Content</a></li>
                     </ul>
-                </li>   
+                </li>
+                <li class="nav-item mx-4 px-3">
+                    <a class="nav-link" href="/admin/feedback/">
+                        <span class="fw-bold">Feedback</span>
+                    </a>
+                </li>
                 <li>
                   <a class="nav-link mx-5 px-3" href="/admin/change_password">
                     <span class="fw-bold">Change Password</span>

@@ -18,13 +18,16 @@
             <div class="card-body">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <div class="row">
+                        <div class="row gap-2">
                             <div class="col-md-3">
                                 <img src="<?php echo $user["img"]; ?>" class="img-thumbnail mx-5" alt="Profile Image">
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
+                                
+                            </div>
+                            <div class="col-md-6">
                                 <label class="h5">User Name: </label>
-                                <p><?php echo $user["lname"]; ?></p>
+                                <p><?php echo $user["user_name"]; ?></p>
                             </div>
                         </div>
                     </div>

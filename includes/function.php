@@ -417,6 +417,19 @@
 		return false;
 	}
 
+	function get_feedback()
+	{
+		global $db;
+		$sql = "SELECT * FROM feedback";
+		$stmt = $db->prepare($sql);
+
+		if($stmt->execute())
+		{
+			return $stmt->fetchAll(PDO::FETCH_ASSOC);
+		}
+		return false;
+	}
+
 	function writer_list()
 	{
 		global $db;
