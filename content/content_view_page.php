@@ -6,6 +6,8 @@
     {
       $id = trim($_GET["q"]);
       $content = get_content_by_passing_id($id);
+      $user_visit_id = $_SESSION["user_id"];
+      insert_previous($user_visit_id, $id);
       read_count($id);
     }
 
@@ -156,9 +158,7 @@
                     <form role="form" action="<?php echo action_form(); ?>" method="post" enctype="multipart/form-data">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" aria-describedby="comment-submit" id="comment" name="comment">
-                            <input type="text" class="form-control" aria-describedby="comment-submit" value="<?php echo $id; ?>" id="content_id" name="content_id" hidden>
-                            <input type="text" class="form-control" aria-describedby="comment-submit" value="<?php echo $user_id; ?>" id="user_id" name="user_id" hidden>
-                            <button class="btn btn-primary" type="submit" id="comment-submit" name="comment-submit">Comment</button>
+                            <input type="text" class="form-control" aria-describedby="comment-submit" value="<?php echo $id; ?>" id="content_id" name="content_id" hidden>                            <button class="btn btn-primary" type="submit" id="comment-submit" name="comment-submit">Comment</button>
                         </div>
                     </form>
                 </div>
@@ -170,7 +170,8 @@
         <?php if($comments): ?>
             <?php foreach($comments as $comment): ?>
                 <?php
-                    $user = get_user_details_by_passing_id($user_id); 
+                    $comment_user = $comment["user_id"];
+                    $user = get_user_details_by_passing_id($comment_user); 
                 ?>
                 <div class="row mb-1">
                     <div class="container">

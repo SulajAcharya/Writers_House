@@ -1016,11 +1016,26 @@
 	{
 		global $db;
 		extract($data);
+		$user_id = $_SESSION["user_id"];
 		$sql="INSERT INTO comments(comment, user_id, content_id) VALUES (:comment, :user_id, :content_id)";
 		$stmt=$db->prepare($sql);
 		$stmt->bindParam(':comment',$comment,PDO::PARAM_STR);
 		$stmt->bindParam(':user_id',$user_id,PDO::PARAM_INT);
 		$stmt->bindParam(':content_id',$content_id,PDO::PARAM_INT);
+		if($stmt->execute())
+		{
+			return true;
+		}
+		return false;
+	}
+
+	function insert_previous($user_id, $id)
+	{
+		global $db;
+		$sql="INSERT INTO previous_visit (user_id, content_id) VALUES (:user_id, :id)";
+		$stmt=$db->prepare($sql);
+		$stmt->bindParam(':user_id',$user_id,PDO::PARAM_INT);
+		$stmt->bindParam(':id',$id,PDO::PARAM_INT);
 		if($stmt->execute())
 		{
 			return true;
