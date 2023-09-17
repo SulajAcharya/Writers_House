@@ -1,5 +1,5 @@
 <?php
-    require_once($_SERVER["DOCUMENT_ROOT"]."/includes/init.php");
+  require_once($_SERVER["DOCUMENT_ROOT"]."/includes/init.php");
 ?>
 
 <div id="main" class="col-md-12">
