@@ -42,7 +42,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label h5">Profile Photo</label>
-                        <input type="file" class="form-control" id="image" name="image" onchange="updateImage(this)>
+                        <input type="file" class="form-control" id="image" name="image" onchange="updateImage(this)">
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label h5">Description</label>

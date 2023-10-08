@@ -67,3 +67,6 @@
     </div>
   </div>
 </div>
+<?php
+    require_once($_SERVER["DOCUMENT_ROOT"]."/includes/footer.php");
+?>
