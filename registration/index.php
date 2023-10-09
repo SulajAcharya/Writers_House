@@ -13,10 +13,10 @@
   <div class="row justify-content-center">
     <div class="col-md-6">
       <div class="card">
-        <div class="card-body">
+        <div class="card-body m-3">
           <?php error_message(); ?>
           <form role="form" action="<?php echo action_form(); ?>" class="form-group" method="post" enctype="multipart/form-data">
-            <h2 class="d-flex justify-content-start mb-4" style="color:blue">Sign Up</h2>
+            <h2 class="mt-2 mb-5 fw-bold text-primary">Create New Account</h2>
             <div class="row mb-3">
                 <div class="d-flex justify-content-center">
                     <img src="/img/default_profile.png" id="profile-photo" name="profile-photo" class="img-fluid profile-photo">
