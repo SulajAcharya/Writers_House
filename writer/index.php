@@ -45,130 +45,49 @@
       <div class="row">
         <?php if($contents): ?>
           <?php foreach($contents as $content): ?>
-            <?php if($content["approved"] == '0'): ?>
-              <div class="col-md-3">
-                <?php
-                  $id = $content["content_id"];
-                  $c_comment = get_comment_count($id);
-                ?>
-                <div class="card h-100">
-                  <div class="card-body">
+            <div class="col-md-3">
+              <?php
+                $id = $content["content_id"];
+                $c_comment = get_comment_count($id);
+              ?>
+              <div class="card h-100">
+                <div class="card-body">
+                  <?php if($content["approved"] == '0'): ?>
                     <span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-warning text-dark">Pending</span>
-                    <a href="/content/content_view_page?q=<?php echo $content["content_id"]; ?>" class="text-decoration-none text-dark">
-                      <img class="card-img-top img-fluid" src="<?php echo $content["cover_img"]; ?>" alt="content">
-                      <div class="row">
-
-                      </div>
-                      <h5 class="card-title my-2"><?php echo $content["title"]; ?></h5>
-                      <div class="row mb-3">
-                        <div class="d-flex justify-content-between gap-2">
-                          <?php echo substr($content['created_time'], 8, 2) . "-" . substr($content['created_time'], 5, 2) . "-" . substr($content['created_time'], 0, 4); ?>
-                          <a href="/writer/edit_content?q=<?php echo $content["content_id"]; ?>" class="btn btn-primary">
-                            <span><i class="fas fa-edit"></i></span>
-                          </a>
-                          <a href="/writer/delete_content?q=<?php echo $content["content_id"]; ?>" class="btn btn-danger" id="delete_button" name="delete_button">
-                            <span><i class="fa-solid fa-trash"></i></span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-4">
-                          <span><i class="fa-regular fa-eye"></i> <?php echo $content["read_count"]; ?></span>
-                        </div>
-                        <div class="col-md-4">
-                          <span><i class="fa-regular fa-message"></i> <?php echo $c_comment; ?></span>
-                        </div>
-                        <div class="col-md-4">
-                          <span><i class="fa-regular fa-thumbs-up"></i> <?php echo $content["likes"]; ?></span>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            <?php elseif($content["approved"] == '1'): ?>
-              <div class="col-md-3">
-                <?php
-                  $id = $content["content_id"];
-                  $c_comment = get_comment_count($id);
-                ?>
-                <div class="card h-100">
-                  <div class="card-body">
+                  <?php elseif($content["approved"] == '1'): ?>
                     <span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">Approved</span>
-                    <a href="/content/content_view_page?q=<?php echo $content["content_id"]; ?>" class="text-decoration-none text-dark">
-                      <img class="card-img-top img-fluid" src="<?php echo $content["cover_img"]; ?>" alt="content">
-                      <div class="row">
-
-                      </div>
-                      <h5 class="card-title my-2"><?php echo $content["title"]; ?></h5>
-                      <div class="row mb-3">
-                        <div class="d-flex justify-content-between gap-2">
-                          <?php echo substr($content['created_time'], 8, 2) . "-" . substr($content['created_time'], 5, 2) . "-" . substr($content['created_time'], 0, 4); ?>
-                          <a href="/writer/edit_content?q=<?php echo $content["content_id"]; ?>" class="btn btn-primary">
-                            <span><i class="fas fa-edit"></i></span>
-                          </a>
-                          <a href="/writer/delete_content?q=<?php echo $content["content_id"]; ?>" class="btn btn-danger" id="delete_button" name="delete_button">
-                            <span><i class="fa-solid fa-trash"></i></span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-4">
-                          <span><i class="fa-regular fa-eye"></i> <?php echo $content["read_count"]; ?></span>
-                        </div>
-                        <div class="col-md-4">
-                          <span><i class="fa-regular fa-message"></i> <?php echo $c_comment; ?></span>
-                        </div>
-                        <div class="col-md-4">
-                          <span><i class="fa-regular fa-thumbs-up"></i> <?php echo $content["likes"]; ?></span>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            <?php else: ?>
-              <div class="col-md-3">
-                <?php
-                  $id = $content["content_id"];
-                  $c_comment = get_comment_count($id);
-                ?>
-                <div class="card h-100">
-                  <div class="card-body">
+                  <?php else: ?>
                     <span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-danger">Disapproved</span>
-                    <a href="/content/content_view_page?q=<?php echo $content["content_id"]; ?>" class="text-decoration-none text-dark">
-                      <img class="card-img-top img-fluid" src="<?php echo $content["cover_img"]; ?>" alt="content">
-                      <div class="row">
-
+                  <?php endif; ?>
+                  <a href="/content/content_view_page?q=<?php echo $content["content_id"]; ?>" class="text-decoration-none text-dark">
+                    <img class="card-img-top img-fluid" src="<?php echo $content["cover_img"]; ?>" alt="content">
+                    <h5 class="card-title my-2"><?php echo $content["title"]; ?></h5>
+                    <div class="row mb-3">
+                      <div class="d-flex justify-content-between gap-2">
+                        <?php echo substr($content['created_time'], 8, 2) . "-" . substr($content['created_time'], 5, 2) . "-" . substr($content['created_time'], 0, 4); ?>
+                        <a href="/writer/edit_content?q=<?php echo $content["content_id"]; ?>" class="btn btn-primary">
+                          <span><i class="fas fa-edit"></i></span>
+                        </a>
+                        <a href="/writer/delete_content?q=<?php echo $content["content_id"]; ?>" class="btn btn-danger" id="delete_button" name="delete_button">
+                          <span><i class="fa-solid fa-trash"></i></span>
+                        </a>
                       </div>
-                      <h5 class="card-title my-2"><?php echo $content["title"]; ?></h5>
-                      <div class="row mb-3">
-                        <div class="d-flex justify-content-between gap-2">
-                          <?php echo substr($content['created_time'], 8, 2) . "-" . substr($content['created_time'], 5, 2) . "-" . substr($content['created_time'], 0, 4); ?>
-                          <a href="/writer/edit_content?q=<?php echo $content["content_id"]; ?>" class="btn btn-primary">
-                            <span><i class="fas fa-edit"></i></span>
-                          </a>
-                          <a href="/writer/delete_content?q=<?php echo $content["content_id"]; ?>" class="btn btn-danger" id="delete_button" name="delete_button">
-                            <span><i class="fa-solid fa-trash"></i></span>
-                          </a>
-                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <span><i class="fa-regular fa-eye"></i> <?php echo $content["read_count"]; ?></span>
                       </div>
-                      <div class="row">
-                        <div class="col-md-4">
-                          <span><i class="fa-regular fa-eye"></i> <?php echo $content["read_count"]; ?></span>
-                        </div>
-                        <div class="col-md-4">
-                          <span><i class="fa-regular fa-message"></i> <?php echo $c_comment; ?></span>
-                        </div>
-                        <div class="col-md-4">
-                          <span><i class="fa-regular fa-thumbs-up"></i> <?php echo $content["likes"]; ?></span>
-                        </div>
+                      <div class="col-md-4">
+                        <span><i class="fa-regular fa-message"></i> <?php echo $c_comment; ?></span>
                       </div>
-                    </a>
-                  </div>
+                      <div class="col-md-4">
+                        <span><i class="fa-regular fa-thumbs-up"></i> <?php echo $content["likes"]; ?></span>
+                      </div>
+                    </div>
+                  </a>
                 </div>
               </div>
-            <?php endif; ?>
+            </div>
           <?php endforeach; ?>
         <?php endif; ?>
       </div>
