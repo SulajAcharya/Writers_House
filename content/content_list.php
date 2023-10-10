@@ -52,24 +52,26 @@
             ?>
             <?php if($authors): ?>
                 <?php foreach($authors as $author): ?>
-                    <?php if($author["verified"] == '1'): ?>
-                        <div class="row">
-                            <a href="/writer/writer_detail?q=<?php echo $author["user_id"]; ?>" class="text-decoration-none text-dark">
-                                <div class="card col-md-6 offset-md-3 mb-3">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <img src="<?php echo $author['img']; ?>" alt="profile_photo" id="profile_photo">
-                                            </div>
-                                            <div class="col-md-9">
-                                                <h5 class="card-title"><?php echo $author["fname"].' '.$author["lname"]; ?></h5>
-                                                <span class="card-text">@<?php echo $author["user_name"]; ?></span>
+                    <?php if($author["block"] == '0'): ?>
+                        <?php if($author["verified"] == '1'): ?>
+                            <div class="row">
+                                <a href="/writer/writer_detail?q=<?php echo $author["user_id"]; ?>" class="text-decoration-none text-dark">
+                                    <div class="card col-md-6 offset-md-3 mb-3">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <img src="<?php echo $author['img']; ?>" alt="profile_photo" id="profile_photo">
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <h5 class="card-title"><?php echo $author["fname"].' '.$author["lname"]; ?></h5>
+                                                    <span class="card-text">@<?php echo $author["user_name"]; ?></span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                        <?php endif; ?>
                     <?php endif; ?>
                 <?php endforeach; ?>
             <?php endif; ?>

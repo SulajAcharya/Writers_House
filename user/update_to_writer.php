@@ -7,6 +7,6 @@
         $id = trim($_GET["q"]);
         update_to_writer($id);
     }
-    echo "<script>window.location='/login/';</script>";
+    echo "<script>window.location='/logout';</script>";
     exit(0);
 ?>

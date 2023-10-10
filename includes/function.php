@@ -28,7 +28,7 @@
 		$email_address = htmlspecialchars(trim($email_address));
 		$password = encrypt_pwd($password);
 
-		$sql = "SELECT user_id, role FROM user WHERE email_address = :email_address AND password = :password";
+		$sql = "SELECT user_id, role FROM user WHERE email_address = :email_address AND password = :password AND block = '0'";
 		$stmt = $db->prepare($sql);
 		$stmt->bindParam(':email_address', $email_address, PDO::PARAM_STR);
 		$stmt->bindParam(':password',$password, PDO::PARAM_STR);
@@ -326,7 +326,7 @@
 	function chat_list()
 	{
 		global $db;
-		$sql = "SELECT * FROM user";
+		$sql = "SELECT * FROM user WHERE block = '0'";
 		$stmt = $db->prepare($sql);
 
 		if($stmt->execute())
@@ -572,7 +572,7 @@
 	function get_content_list()
 	{
 		global $db;
-		$sql = "SELECT * FROM content WHERE deleted = '0'";
+		$sql = "SELECT * FROM content WHERE deleted = '0' AND deleted= '0'";
 		$stmt = $db->prepare($sql);
 		if ($stmt->execute())
 		{
@@ -584,7 +584,7 @@
 	function get_pending_content_list()
 	{
 		global $db;
-		$sql = "SELECT * FROM content WHERE approved = '0'";
+		$sql = "SELECT * FROM content WHERE approved = '0' AND deleted = '0'";
 		$stmt = $db->prepare($sql);
 		if ($stmt->execute())
 		{
@@ -596,7 +596,7 @@
 	function get_approve_content_list()
 	{
 		global $db;
-		$sql = "SELECT * FROM content WHERE approved = '1'";
+		$sql = "SELECT * FROM content WHERE approved = '1' AND deleted = '0'";
 		$stmt = $db->prepare($sql);
 		if ($stmt->execute())
 		{
@@ -608,7 +608,7 @@
 	function get_disapprove_content_list()
 	{
 		global $db;
-		$sql = "SELECT * FROM content WHERE approved = '-1'";
+		$sql = "SELECT * FROM content WHERE approved = '-1' AND deleted = '0' ";
 		$stmt = $db->prepare($sql);
 		if ($stmt->execute())
 		{
@@ -804,7 +804,7 @@
 	function update_to_writer($id)
 	{
 		global $db;
-		$sql = "UPDATE user SET role = 'writer', modified_time = NOW() WHERE user_id = :id";
+		$sql = "UPDATE user SET role = 'writer', modified_time = NOW(), verified = '0' WHERE user_id = :id";
 		$stmt = $db->prepare($sql);
 		$stmt->bindParam(':id',$id,PDO::PARAM_INT);
 		if ($stmt->execute()) {
