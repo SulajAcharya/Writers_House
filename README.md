@@ -4,11 +4,13 @@ WritersHouse is an interactive storytelling platform designed to connect writers
 
 ## Index
 
-1. [Features](#features)
-2. [Setup and Running the Project](#setup-and-running-the-project)
-3. [Project Build](#project-build)
-4. [Screenshots](#screenshots)
-5. [Conclusion](#conclusion)
+| Section                          | Link                                       |
+|----------------------------------|--------------------------------------------|
+| **Features**                     | [Features](#features)                     |
+| **Setup and Running the Project**| [Setup and Running the Project](#setup-and-running-the-project) |
+| **Project Build**                | [Project Build](#project-build)           |
+| **Screenshots**                  | [Screenshots](#screenshots)               |
+| **Conclusion**                   | [Conclusion](#conclusion)                 |
 
 ## Features
 
