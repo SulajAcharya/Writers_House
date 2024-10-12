@@ -51,6 +51,8 @@ To set up and run the WritersHouse platform locally, follow these steps:
 
 The platform is built using the Bootstrap framework for responsive design and user interface components. Ensure that Bootstrap CSS and JavaScript files are included in your project to maintain the expected appearance and functionality.
 
+## Screenshot
+
 ## Conclusion
 
 WritersHouse combines traditional storytelling with modern digital features to create a rich environment for writers and readers. By following the setup instructions, you can deploy the platform locally and explore its functionalities. Enjoy building and engaging with this dynamic storytelling platform!
