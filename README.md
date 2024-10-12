@@ -2,6 +2,8 @@
 
 WritersHouse is an interactive storytelling platform designed to connect writers and readers. It provides a space for writers to showcase their literary work and for readers to explore and engage with various types of content. The platform includes features such as community interaction, content review, audio storytelling, and music integration.
 
+## Index
+
 ## Features
 
 - **Writing Showcase**: Allows writers to share their literary compositions, including short stories, essays, articles, and poetry.
