@@ -53,6 +53,37 @@ The platform is built using the Bootstrap framework for responsive design and us
 
 ## Screenshots
 
+<table>
+  <tr>
+    <td>
+      <img src="images/Homepage.png" alt="Home Page" width="350"/>
+      <p align="center"><b>Home Page</b></p>
+    </td>
+    <td>
+      <img src="./images/RegistrationPage.png" alt="Registration Page" width="350"/>
+      <p align="center"><b>Registration Page</b></p>
+    </td>
+    <td>
+      <img src="./images/LoginPage.png" alt="Sign In Page" width="350"/>
+      <p align="center"><b>Sign In Page</b></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="./images/UserDashboard.png" alt="User Dashboard" width="350"/>
+      <p align="center"><b>User Dashboard</b></p>
+    </td>
+    <td>
+      <img src="./images/WritersDashboard.png" alt="Writer Dashboard" width="350"/>
+      <p align="center"><b>Writer Dashboard</b></p>
+    </td>
+    <td>
+      <img src="./images/UpdateProfile.png" alt="Profile Update Page" width="350"/>
+      <p align="center"><b>Profile Update Page</b></p>
+    </td>
+  </tr>
+</table>
+
 ## Conclusion
 
 WritersHouse combines traditional storytelling with modern digital features to create a rich environment for writers and readers. By following the setup instructions, you can deploy the platform locally and explore its functionalities. Enjoy building and engaging with this dynamic storytelling platform!
