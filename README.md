@@ -56,30 +56,56 @@ The platform is built using the Bootstrap framework for responsive design and us
 <table>
   <tr>
     <td>
-      <img src="./workingimages/Homepage.png" alt="Home Page" width="350"/>
+      <img src="./images/Homepage.png" alt="Home Page" width="350"/>
       <p align="center"><b>Home Page</b></p>
     </td>
     <td>
-      <img src="./workingimages/RegistrationPage.png" alt="Registration Page" width="350"/>
+      <img src="./images/RegistrationPage.png" alt="Registration Page" width="350"/>
       <p align="center"><b>Registration Page</b></p>
     </td>
     <td>
-      <img src="./workingimages/LoginPage.png" alt="Sign In Page" width="350"/>
+      <img src="./images/LoginPage.png" alt="Sign In Page" width="350"/>
       <p align="center"><b>Sign In Page</b></p>
     </td>
   </tr>
   <tr>
     <td>
-      <img src="./workingimages/UserDashboard.png" alt="User Dashboard" width="350"/>
+      <img src="./images/UserDashboard.png" alt="User Dashboard" width="350"/>
       <p align="center"><b>User Dashboard</b></p>
     </td>
     <td>
-      <img src="./workingimages/WritersDashboard.png" alt="Writer Dashboard" width="350"/>
+      <img src="./images/WritersDashboard.png" alt="Writer Dashboard" width="350"/>
       <p align="center"><b>Writer Dashboard</b></p>
     </td>
     <td>
-      <img src="./workingimages/UpdateProfile.png" alt="Profile Update Page" width="350"/>
-      <p align="center"><b>Profile Update Page</b></p>
+      <img src="./images/AdminDashboard.png" alt="Admin Dashboard" width="350"/>
+      <p align="center"><b>Admin Dashboard</b></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="./images/UpdateProfile.png" alt="Update Profile" width="350"/>
+      <p align="center"><b>Update Profile</b></p>
+    </td>
+    <td>
+      <img src="./images/ChangePassword.png" alt="Change Password" width="350"/>
+      <p align="center"><b>Change Password</b></p>
+    </td>
+    <td>
+      <img src="./images/ExplorePage.png" alt="Explore Page" width="350"/>
+      <p align="center"><b>Explore Page</b></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="./images/AddContentPage.png" alt="Add Content Page" width="350"/>
+      <p align="center"><b>Add Content</b></p>
+    </td>
+    <td>
+      <img src="./images/EditContentPage.png" alt="Edit Content Page" width="350"/>
+      <p align="center"><b>Edit Content</b></p>
+    </td>
+    <td>
     </td>
   </tr>
 </table>
